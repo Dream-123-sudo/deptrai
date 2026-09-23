@@ -11,6 +11,7 @@
     <link rel="preload" as="image" href="assets/discord/emoji_776055210060808222.webp">
     <link rel="preload" as="image" href="./template/img/online.png">
     <link rel="preload" as="image" href="assets/img/cursor_d2dc7d9b1f56.webp">
+    <link rel="preload" as="image" href="assets/img/f_r_a_g_m_e_n_t_s.png">
 
     <link rel="stylesheet" href="./template/css/bio.css">
     <link rel="stylesheet" href="./template/css/fontawesome-all.min.css" />
@@ -19,17 +20,21 @@
     <link href="fonts/poppins.css" rel="stylesheet">
     <link rel="stylesheet" href="./template/css/iziToast.min.css" />
     <link rel="icon" type="image/x-icon" href="./template/img/logo.ico">
-    <meta name="theme-color" content="#00f2fe">
+    <meta name="theme-color" content="#0a0a0f">
     <meta name="description" content="My family is my sole reason for living. :1487781816462213221:">
     <meta name="author" content="Hồ Viết Đạii | Han">
     <meta property="og:title" content="Hồ Viết Đạii | Han">
     <meta property="og:description" content="My family is my sole reason for living. :1487781816462213221:">
-    <meta property="og:image" content="https://zyo.lol/og?user=Huy_vox.Zzz">
+    <meta property="og:image" content="https://only-taupe-eight.vercel.app/assets/img/f_r_a_g_m_e_n_t_s.png">
+    <meta property="og:image:secure_url" content="https://only-taupe-eight.vercel.app/assets/img/f_r_a_g_m_e_n_t_s.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="640">
+    <meta property="og:image:height" content="360">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Hồ Viết Đạii | Han">
     <meta name="twitter:description" content="My family is my sole reason for living. :1487781816462213221:">
-    <meta name="twitter:image" content="https://zyo.lol/og?user=Huy_vox.Zzz">
+    <meta name="twitter:image" content="https://only-taupe-eight.vercel.app/assets/img/f_r_a_g_m_e_n_t_s.png">
     <!-- font 4 bio -->
     <link href="fonts/vampiro-one.css" rel="stylesheet">
 </head>
@@ -160,25 +165,110 @@
 </script>
 <style>
     ::selection {
-        background: #00f2fe;
+        background: rgba(255, 255, 255, 0.9);
         color: #08040d;
     }
 </style>
 <style>
-    /* Ép toàn bộ chữ và hiệu ứng của website sang màu xanh cyan neon */
-    *,
-    *::before,
-    *::after {
-        color: #00f2fe !important;
+    /* Bảng màu chữ Ánh Trăng (Moonlit Silver / Pure White) hài hòa hoàn hảo với phong cách Samurai & Obito */
+    body {
+        color: #f8fafc;
+    }
+
+    /* Phân cấp màu chữ sắc nét, độ tương phản cao trên nền tối */
+    .header,
+    #userName {
+        color: #ffffff !important;
+        text-shadow: 0 0 14px rgba(255, 255, 255, 0.75), 0 0 28px rgba(255, 255, 255, 0.35) !important;
+    }
+
+    .bio_description,
+    #bio_description {
+        color: #e2e8f0 !important;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.35) !important;
+    }
+
+    .bio_infomation .text {
+        color: #e2e8f0 !important;
+    }
+
+    .bio_infomation svg {
+        color: #ffffff !important;
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+    }
+
+    .svg_container .svg_item svg {
+        color: #ffffff !important;
+        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+        transition: filter 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    }
+
+    .svg_container .svg_item:hover svg {
+        color: #ffffff !important;
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+        transform: translateY(-2px);
+    }
+
+    /* Discord Presence */
+    .discord_presence_name {
+        color: #ffffff !important;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    }
+
+    .discord_custom_status_text {
+        color: #cbd5e1 !important;
+    }
+
+    .discord_presence_activity_title {
+        color: #ffffff !important;
+    }
+
+    .discord_presence_activity_subtitle {
+        color: rgba(241, 245, 249, 0.8) !important;
+    }
+
+    .discord_presence_activity_elapsed {
+        color: rgba(241, 245, 249, 0.85) !important;
+    }
+
+    /* Couple Embed */
+    .couple_embed_container .avatar_container .name {
+        color: #ffffff !important;
+    }
+
+    .couple_embed_container .heart_container .time {
+        color: #e2e8f0 !important;
+    }
+
+    /* Audio Player */
+    .audio_container .name,
+    #musicName {
+        color: #ffffff !important;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.45) !important;
+    }
+
+    .audio_container .flex .duration {
+        color: rgba(255, 255, 255, 0.75) !important;
+    }
+
+    .audio_container .flex button svg {
+        color: #ffffff !important;
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.45));
+    }
+
+    /* Overlay audio prompt */
+    .overlay_audio .text {
+        color: #ffffff !important;
+        text-shadow: 0 0 18px rgba(255, 255, 255, 0.85), 0 0 35px rgba(255, 255, 255, 0.45) !important;
     }
 </style>
 <style>
     .bio-container {
-        --iconGlow: drop-shadow(#00f2fe 1px 0 7px);
-        --badgeColor: #00f2fe;
-        --badgeGlow: drop-shadow(#00f2fe 1px 0 7px);
-        --audioControlColor: #00f2fe;
-        --audioControlRgba05: rgba(0, 242, 254, 0.5);
+        --iconGlow: drop-shadow(rgba(255, 255, 255, 0.6) 1px 0 7px);
+        --badgeColor: #ffffff;
+        --badgeGlow: drop-shadow(rgba(255, 255, 255, 0.6) 1px 0 7px);
+        --audioControlColor: #ffffff;
+        --audioControlRgba05: rgba(255, 255, 255, 0.5);
         --avatarRadius: 50%;
     }
 
@@ -493,7 +583,7 @@
             || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
         window.createShaderBackgroundEffect('#zyoShaderBackgroundEffect', {
             effect: window.zyoShaderEffectFromBackgroundValue(19),
-            color: '#00f2fe',
+            color: '#ffffff',
             animate: true,
             width: () => window.innerWidth,
             height: () => window.innerHeight,
@@ -545,9 +635,9 @@
         <p class="text">Hey Yooo</p>
     </div>
     <div class="revealAudioLike" style="
-            --audioLikeColor: #00f2fe;
-            --audioLikeRgba05: rgba(0, 242, 254, 0.5);
-            --audioLikeRgba02: rgba(0, 242, 254, 0.2);
+            --audioLikeColor: #ffffff;
+            --audioLikeRgba05: rgba(255, 255, 255, 0.5);
+            --audioLikeRgba02: rgba(255, 255, 255, 0.2);
         ">
         <div class="audio_control" id="audio_control">
             <div class="">
@@ -583,18 +673,18 @@
         </label>
     </div>
     <div class="bio-container banner_float_info " style="
-        --nameColor: #00f2fe;
-        --nameColor25: rgba(0, 242, 254, 0.25);
-        --descriptionColor: #00f2fe;
-        --backgroundColor: rgba(16, 9, 26, 0.11);
-        --iconColor: #00f2fe;
-        --backgroundBlur: 0px;
-        --nameGlow: 0px 0px 16.5px #00f2fe;
-        --descriptionGlow: 0px 0px 16.5px #00f2fe;
-        --discordBackground: rgba(16, 9, 26, 0.11);
-        --discordBorder: rgba(0, 242, 254, 0.2);
-        --discordDescription: rgba(0, 242, 254, 0.7);
-                --borderRadius: 25px;
+        --nameColor: #ffffff;
+        --nameColor25: rgba(255, 255, 255, 0.25);
+        --descriptionColor: #e2e8f0;
+        --backgroundColor: rgba(14, 12, 20, 0.35);
+        --iconColor: #ffffff;
+        --backgroundBlur: 8px;
+        --nameGlow: 0px 0px 14px rgba(255, 255, 255, 0.7);
+        --descriptionGlow: 0px 0px 10px rgba(255, 255, 255, 0.35);
+        --discordBackground: rgba(16, 14, 22, 0.55);
+        --discordBorder: rgba(255, 255, 255, 0.15);
+        --discordDescription: rgba(255, 255, 255, 0.8);
+        --borderRadius: 25px;
         --bioWidth: max-content;
         --bioBannerHeight: 200px;
         --bioBannerFadeStop: 40%;
@@ -919,7 +1009,7 @@
             || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
         window.createShaderBackgroundEffect('#zyoShaderBackgroundEffect', {
             effect: window.zyoShaderEffectFromBackgroundValue(19),
-            color: '#00f2fe',
+            color: '#ffffff',
             animate: true,
             width: () => window.innerWidth,
             height: () => window.innerHeight,
