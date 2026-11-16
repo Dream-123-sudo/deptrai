@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hồ Viết Đạii</title>
-    <link rel="preload" as="video" href="assets/media/background.mp4" type="video/mp4">
+    <link rel="preload" as="image" href="assets/img/banner_55842709bdf2.webp">
+    <link rel="preload" as="image" href="assets/img/audioImage_0b440956db7b.webp">
     <link rel="preload" as="image" href="assets/img/avatar_2.png">
-    <link rel="preload" as="image" href="assets/discord/emoji_776055210060808222.webp">
     <link rel="preload" as="image" href="./template/img/online.png">
     <link rel="preload" as="image" href="assets/img/cursor_d2dc7d9b1f56.webp">
 
@@ -19,20 +19,23 @@
     <link href="fonts/poppins.css" rel="stylesheet">
     <link rel="stylesheet" href="./template/css/iziToast.min.css" />
     <link rel="icon" type="image/x-icon" href="./template/img/logo.ico">
-    <meta name="theme-color" content="#00f2fe">
-    <meta name="description" content="My family is my sole reason for living. :1487781816462213221:">
+    <meta name="theme-color" content="#0a0a0f">
+    <meta name="description" content="My family is my sole reason for living.">
     <meta name="author" content="Hồ Viết Đạii | Han">
     <meta property="og:title" content="Hồ Viết Đạii | Han">
-    <meta property="og:description" content="My family is my sole reason for living. :1487781816462213221:">
-    <meta property="og:image" content="https://zyo.lol/og?user=Huy_vox.Zzz">
+    <meta property="og:description" content="My family is my sole reason for living.">
+    <meta property="og:image" content="https://only-taupe-eight.vercel.app/assets/img/f_r_a_g_m_e_n_t_s.png">
+    <meta property="og:image:secure_url" content="https://only-taupe-eight.vercel.app/assets/img/f_r_a_g_m_e_n_t_s.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="640">
+    <meta property="og:image:height" content="360">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Hồ Viết Đạii | Han">
-    <meta name="twitter:description" content="My family is my sole reason for living. :1487781816462213221:">
-    <meta name="twitter:image" content="https://zyo.lol/og?user=Huy_vox.Zzz">
+    <meta name="twitter:description" content="My family is my sole reason for living.">
+    <meta name="twitter:image" content="https://only-taupe-eight.vercel.app/assets/img/f_r_a_g_m_e_n_t_s.png">
     <!-- font 4 bio -->
     <link href="fonts/vampiro-one.css" rel="stylesheet">
-</head>
 <style>
     .zyo-discord-presence-skeleton,
     .zyo-second-tab-skeleton {
@@ -118,7 +121,25 @@
             background-position: -220% 0;
         }
     }
+
+    /* Audio cover: dark placeholder + own GPU layer, so no white box while the card fades in */
+    .audio_container .audio_image {
+        background: #1c1c1c;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+    }
+
+    .audio_container.reveal {
+        will-change: opacity;
+    }
+    .lyric_cjk {
+        font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.02em;
+    }
 </style>
+</head>
+<body class="profile-body-1" style=" background: #08040d">
 <!-- google analytics removed (offline) -->
 <div id="overlay" class="overlay"></div>
 <div closeoutsidepopup="" class="popup_content_container" id="link_preview_container" style="display: none;">
@@ -160,25 +181,124 @@
 </script>
 <style>
     ::selection {
-        background: #00f2fe;
+        background: rgba(255, 255, 255, 0.9);
         color: #08040d;
     }
 </style>
 <style>
-    /* Ép toàn bộ chữ và hiệu ứng của website sang màu xanh cyan neon */
-    *,
-    *::before,
-    *::after {
-        color: #00f2fe !important;
+    /* Click / chạm nhanh 2 lần: không bôi trắng chữ, không bị zoom đúp trên điện thoại, không nháy highlight */
+    .like_button,
+    .audio_control,
+    .audio_container button,
+    .volumeIcon,
+    .overlay_audio,
+    .svg_container .svg_item {
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+</style>
+<style>
+    /* Bảng màu chữ Ánh Trăng (Moonlit Silver / Pure White) hài hòa hoàn hảo với phong cách Samurai & Obito */
+    body {
+        color: #f8fafc;
+    }
+
+    /* Phân cấp màu chữ sắc nét, độ tương phản cao trên nền tối */
+    .header,
+    #userName {
+        color: #ffffff !important;
+        text-shadow: 0 0 14px rgba(255, 255, 255, 0.75), 0 0 28px rgba(255, 255, 255, 0.35) !important;
+    }
+
+    .bio_description,
+    #bio_description {
+        color: #e2e8f0 !important;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.35) !important;
+    }
+
+    .bio_infomation .text {
+        color: #e2e8f0 !important;
+    }
+
+    .bio_infomation svg {
+        color: #ffffff !important;
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+    }
+
+    .svg_container .svg_item svg {
+        color: #ffffff !important;
+        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+        transition: filter 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    }
+
+    .svg_container .svg_item:hover svg {
+        color: #ffffff !important;
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+        transform: translateY(-2px);
+    }
+
+    /* Discord Presence */
+    .discord_presence_name {
+        color: #ffffff !important;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    }
+
+    .discord_custom_status_text {
+        color: #cbd5e1 !important;
+    }
+
+    .discord_presence_activity_title {
+        color: #ffffff !important;
+    }
+
+    .discord_presence_activity_subtitle {
+        color: rgba(241, 245, 249, 0.8) !important;
+    }
+
+    .discord_presence_activity_elapsed {
+        color: rgba(241, 245, 249, 0.85) !important;
+    }
+
+    /* Couple Embed */
+    .couple_embed_container .avatar_container .name {
+        color: #ffffff !important;
+    }
+
+    .couple_embed_container .heart_container .time {
+        color: #e2e8f0 !important;
+    }
+
+    /* Audio Player */
+    .audio_container .name,
+    #musicName {
+        color: #ffffff !important;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.45) !important;
+    }
+
+    .audio_container .flex .duration {
+        color: rgba(255, 255, 255, 0.75) !important;
+    }
+
+    .audio_container .flex button svg {
+        color: #ffffff !important;
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.45));
+    }
+
+    /* Overlay audio prompt */
+    .overlay_audio .text {
+        color: #ffffff !important;
+        text-shadow: 0 0 18px rgba(255, 255, 255, 0.85), 0 0 35px rgba(255, 255, 255, 0.45) !important;
     }
 </style>
 <style>
     .bio-container {
-        --iconGlow: drop-shadow(#00f2fe 1px 0 7px);
-        --badgeColor: #00f2fe;
-        --badgeGlow: drop-shadow(#00f2fe 1px 0 7px);
-        --audioControlColor: #00f2fe;
-        --audioControlRgba05: rgba(0, 242, 254, 0.5);
+        --iconGlow: drop-shadow(rgba(255, 255, 255, 0.6) 1px 0 7px);
+        --badgeColor: #ffffff;
+        --badgeGlow: drop-shadow(rgba(255, 255, 255, 0.6) 1px 0 7px);
+        --audioControlColor: #ffffff;
+        --audioControlRgba05: rgba(255, 255, 255, 0.5);
         --avatarRadius: 50%;
     }
 
@@ -290,10 +410,11 @@
         }
     }
 </style>
-<video style="object-fit: cover;" id="video" autoplay muted loop playsinline webkit-playsinline preload="auto"
+<video style="position: fixed; inset: 0; width: 100vw; height: 100vh; height: 100dvh; object-fit: cover; z-index: -2; pointer-events: none;"
+    id="video" autoplay muted loop playsinline webkit-playsinline preload="auto"
+    poster="assets/img/only_peo_full.png"
     disablePictureInPicture disableRemotePlayback class="background">
     <source src="assets/media/background.mp4" type="video/mp4">
-    <source src="https://files.catbox.moe/zrhnys.mp4" type="video/mp4">
 </video>
 <script>
     (function () {
@@ -313,31 +434,51 @@
             }
         }
 
-        // Start muted playback when the browser permits it.
+        // Start playback as soon as data arrives
         ensurePlaying();
         video.addEventListener('canplay', ensurePlaying);
         video.addEventListener('loadeddata', ensurePlaying);
 
-        // Loop before the final frame so the background never freezes at the end.
-        video.addEventListener('timeupdate', function () {
-            if (video.duration && video.currentTime >= video.duration - 0.2) {
-                video.currentTime = 0;
-                ensurePlaying();
-            }
-        });
-
+        // Seamless loop guarantee: never stall at the end of the video
         video.addEventListener('ended', function () {
             video.currentTime = 0;
             ensurePlaying();
         });
 
-        // User interactions trigger playback if autoplay was restricted
+        // Resume playback immediately when tab becomes visible
+        document.addEventListener('visibilitychange', function () {
+            if (!document.hidden) ensurePlaying();
+        });
+
+        // Safe watchdog: only resume playback if paused or stuck at loop end, NEVER reload or flush buffer
+        let lastTime = -1, stuckTicks = 0;
+        setInterval(function () {
+            if (document.hidden) return;
+            if (video.paused) {
+                ensurePlaying();
+                return;
+            }
+            if (video.currentTime === lastTime) {
+                stuckTicks++;
+                if (stuckTicks >= 2) {
+                    stuckTicks = 0;
+                    if (video.duration && video.currentTime >= video.duration - 0.5) {
+                        video.currentTime = 0;
+                    }
+                    ensurePlaying();
+                }
+            } else {
+                stuckTicks = 0;
+                lastTime = video.currentTime;
+            }
+        }, 2000);
+
+        // User interactions trigger playback if autoplay was restricted by browser policy
         ['click', 'touchstart', 'keydown'].forEach(evt => {
             window.addEventListener(evt, ensurePlaying, { once: true, passive: true });
         });
     })();
 </script>
-<div class="background" id="background" style=""></div>
 <audio id="audio"></audio>
 <script>
     window.zyoAudioLyricsEnabled = true;
@@ -395,6 +536,23 @@
         return Math.max(3, Number(window.zyoAudioLyricsVisibleSlots || 3));
     }
 
+    function zyoSetLyricText(el, text) {
+        const cjk = /[\u3000-\u303f\u3400-\u9fff\uff00-\uffef]+/;
+        el.textContent = '';
+        String(text).split(/([\u3000-\u303f\u3400-\u9fff\uff00-\uffef]+)/).forEach((part) => {
+            if (!part) return;
+            if (cjk.test(part)) {
+                const span = document.createElement('span');
+                span.lang = 'zh-CN';
+                span.className = 'lyric_cjk';
+                span.textContent = part;
+                el.appendChild(span);
+            } else {
+                el.appendChild(document.createTextNode(part));
+            }
+        });
+    }
+
     function zyoRenderAudioLyricsDisplay() {
         const display = document.querySelector('[data-audio-lyrics-display]');
         const list = display?.querySelector('[data-lyrics-list]');
@@ -418,7 +576,7 @@
             const item = document.createElement('p');
             item.className = 'lyrics_line';
             item.dataset.lyricsIndex = String(index);
-            item.textContent = line.text;
+            zyoSetLyricText(item, line.text);
             list.appendChild(item);
         });
         list.style.setProperty('--lyrics-visible-slots', String(slotCount));
@@ -489,19 +647,40 @@
 <script>
     (function () {
         if (!window.createShaderBackgroundEffect) return;
-        const zyoShaderBioIsMobile = /Mobi|Android|iPhone|iPod/i.test(navigator.userAgent)
+        const isMobile = /Mobi|Android|iPhone|iPod/i.test(navigator.userAgent)
             || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-        window.createShaderBackgroundEffect('#zyoShaderBackgroundEffect', {
-            effect: window.zyoShaderEffectFromBackgroundValue(19),
-            color: '#00f2fe',
-            animate: true,
-            width: () => window.innerWidth,
-            height: () => window.innerHeight,
-            renderScale: zyoShaderBioIsMobile ? 0.45 : 0.65,
-            maxDpr: zyoShaderBioIsMobile ? 1 : 1.5,
-            maxFPS: zyoShaderBioIsMobile ? 20 : 30,
-            powerPreference: 'low-power',
-        });
+        const SEL = '#zyoShaderBackgroundEffect';
+        let instance = null;
+
+        function start() {
+            if (!document.querySelector(SEL)) return;
+            try {
+                instance = window.createShaderBackgroundEffect(SEL, {
+                    effect: window.zyoShaderEffectFromBackgroundValue(19),
+                    color: '#ffffff',
+                    animate: true,
+                    width: () => window.innerWidth,
+                    height: () => window.innerHeight,
+                    renderScale: isMobile ? 0.45 : 0.65,
+                    maxDpr: isMobile ? 1 : 1.5,
+                    maxFPS: isMobile ? 20 : 30,
+                    powerPreference: 'low-power',
+                    onContextLost: function () {
+                        setTimeout(function () {
+                            if (instance && instance.isContextLost && instance.isContextLost()) {
+                                try { instance.destroy && instance.destroy(); } catch (e) { }
+                                instance = null;
+                                setTimeout(start, 500);
+                            }
+                        }, 2000);
+                    },
+                });
+            } catch (e) {
+                console.warn('Shader init warning:', e);
+            }
+        }
+
+        start();
     })();
 </script>
 <script>
@@ -539,15 +718,20 @@
 </script>
 <script src="./template/js/iziToast.min.js" type="text/javascript"></script>
 <script src="./template/js/main.js" type="text/javascript"></script>
+<script>
+    // An toàn: nếu main.js không có toggleActive thì onclick sẽ không ném ReferenceError
+    if (typeof window.toggleActive !== 'function') {
+        window.toggleActive = function (el) { if (el && el.classList) el.classList.toggle('active'); };
+    }
+</script>
 
-<body class="profile-body-1" style=" background: #08040d">
     <div class="overlay_audio" onclick="hideOverlay()">
         <p class="text">Hey Yooo</p>
     </div>
     <div class="revealAudioLike" style="
-            --audioLikeColor: #00f2fe;
-            --audioLikeRgba05: rgba(0, 242, 254, 0.5);
-            --audioLikeRgba02: rgba(0, 242, 254, 0.2);
+            --audioLikeColor: #ffffff;
+            --audioLikeRgba05: rgba(255, 255, 255, 0.5);
+            --audioLikeRgba02: rgba(255, 255, 255, 0.2);
         ">
         <div class="audio_control" id="audio_control">
             <div class="">
@@ -583,26 +767,26 @@
         </label>
     </div>
     <div class="bio-container banner_float_info " style="
-        --nameColor: #00f2fe;
-        --nameColor25: rgba(0, 242, 254, 0.25);
-        --descriptionColor: #00f2fe;
-        --backgroundColor: rgba(16, 9, 26, 0.11);
-        --iconColor: #00f2fe;
-        --backgroundBlur: 0px;
-        --nameGlow: 0px 0px 16.5px #00f2fe;
-        --descriptionGlow: 0px 0px 16.5px #00f2fe;
-        --discordBackground: rgba(16, 9, 26, 0.11);
-        --discordBorder: rgba(0, 242, 254, 0.2);
-        --discordDescription: rgba(0, 242, 254, 0.7);
-                --borderRadius: 25px;
+        --nameColor: #ffffff;
+        --nameColor25: rgba(255, 255, 255, 0.25);
+        --descriptionColor: #e2e8f0;
+        --backgroundColor: rgba(14, 12, 20, 0.35);
+        --iconColor: #ffffff;
+        --backgroundBlur: 8px;
+        --nameGlow: 0px 0px 14px rgba(255, 255, 255, 0.7);
+        --descriptionGlow: 0px 0px 10px rgba(255, 255, 255, 0.35);
+        --discordBackground: rgba(16, 14, 22, 0.55);
+        --discordBorder: rgba(255, 255, 255, 0.15);
+        --discordDescription: rgba(255, 255, 255, 0.8);
+        --borderRadius: 25px;
         --bioWidth: max-content;
         --bioBannerHeight: 200px;
         --bioBannerFadeStop: 40%;
     ">
         <div class="bio_content_container">
             <div class="content-container css_content_container reveal">
-                <div class="bio_banner_container">
-                    <img src="assets/img/banner_55842709bdf2.webp" alt="" class="bio_banner_img">
+                <div class="bio_banner_container" style="background: #14121a;">
+                    <img src="assets/img/banner_55842709bdf2.webp" alt="" class="bio_banner_img" loading="eager" decoding="async">
                 </div>
                 <div class="bio_small_infomation">
                     <div class="bio_infomation" data-tippy-content="Like">
@@ -624,7 +808,7 @@
                                 d="M12 9a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5a5 5 0 0 1 5-5a5 5 0 0 1 5 5a5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5">
                             </path>
                         </svg>
-                        <p class="text">57</p>
+                        <p class="text" id="viewCount">57</p>
                     </div>
 
                     <div class="border"></div>
@@ -684,38 +868,20 @@
                                             d="M369.9 318.2c44.3 54.3 64.7 98.8 54.4 118.7-7.9 15.1-56.7 44.6-92.6 55.9-29.6 9.3-68.4 13.3-100.4 10.2-38.2-3.7-76.9-17.4-110.1-39C93.3 445.8 87 438.3 87 423.4c0-29.9 32.9-82.3 89.2-142.1 32-33.9 76.5-73.7 81.4-72.6 9.4 2.1 84.3 75.1 112.3 109.5zM188.6 143.8c-29.7-26.9-58.1-53.9-86.4-63.4-15.2-5.1-16.3-4.8-28.7 8.1-29.2 30.4-53.5 79.7-60.3 122.4-5.4 34.2-6.1 43.8-4.2 60.5 5.6 50.5 17.3 85.4 40.5 120.9 9.5 14.6 12.1 17.3 9.3 9.9-4.2-11-.3-37.5 9.5-64 14.3-39 53.9-112.9 120.3-194.4zm311.6 63.5C483.3 127.3 432.7 77 425.6 77c-7.3 0-24.2 6.5-36 13.9-23.3 14.5-41 31.4-64.3 52.8C367.7 197 427.5 283.1 448.2 346c6.8 20.7 9.7 41.1 7.4 52.3-1.7 8.5-1.7 8.5 1.4 4.6 6.1-7.7 19.9-31.3 25.4-43.5 7.4-16.2 15-40.2 18.6-58.7 4.3-22.5 3.9-70.8-.8-93.4zM141.3 43C189 40.5 251 77.5 255.6 78.4c.7.1 10.4-4.2 21.6-9.7 63.9-31.1 94-25.8 107.4-25.2-63.9-39.3-152.7-50-233.9-11.7-23.4 11.1-24 11.9-9.4 11.2z">
                                         </path>
                                     </svg> </a>
-                                <button onclick="copyTextFromParent(this)" style="display:none"
+                                <a href="https://github.com/Dream-123-sudo" target="_blank" rel="noopener noreferrer"
                                     class="svg_item singleColor">
-                                    <svg id="riotSvg" viewBox="0 0 186 164" width="1em" height="1em"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill="Currentcolor"
-                                            d="M98.77 0L0 45.74l24.61 93.66 18.73-2.3-5.15-58.89 6.15-2.74 10.62 60.2 32.01-3.93-5.69-65 6.09-2.71 11.68 66.23 32.38-3.98-6.23-71.25 6.16-2.74 12.77 72.43 32.01-3.93V19.38L98.77 0zM101.09 142.05l1.63 9.22 73.42 12.24v-30.68l-75.01 9.21-.04.01z">
-                                        </path>
-                                    </svg>
-                                    <p class="svg_text" style="display: none">Huy Vox#2410</p>
-                                </button>
-                                <a href="https://github.com/Zzz-NhatHuy29" target="_blank" rel="noopener noreferrer"
-                                    style="display:none" class="svg_item singleColor">
                                     <svg id="githubSvg" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
                                         fill="Currentcolor" viewBox="0 0 496 512">
                                         <path
                                             d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
                                         </path>
                                     </svg> </a>
-                                <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer"
-                                    style="display:none" class="svg_item singleColor">
+                                <a href="https://open.spotify.com/user/317e2vdfpx7rdv53qrez5flhviee" target="_blank"
+                                    rel="noopener noreferrer" class="svg_item singleColor">
                                     <svg id="spotifySvg" width="1em" height="1em" fill="Currentcolor"
                                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z">
-                                        </path>
-                                    </svg> </a>
-                                <a href="https://roblox.com/users/huynoob3421" target="_blank" rel="noopener noreferrer"
-                                    style="display:none" class="svg_item singleColor">
-                                    <svg id="robloxSvg" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                                        viewBox="0.16 0 23.68 24">
-                                        <path fill="currentColor"
-                                            d="M5.164 0L.16 18.928L18.836 24L23.84 5.072Zm8.747 15.354l-5.219-1.417l1.399-5.29l5.22 1.418l-1.4 5.29z">
                                         </path>
                                     </svg> </a>
                             </div>
@@ -761,7 +927,7 @@
 
                                     <div class="discord_activity_right_section" id="discordRightActivity">
                                         <img id="discordActivityImg" data-tippy-content="Playing"
-                                            src="assets/img/avatar_e30eca6b59f72.png"
+                                            src="assets/img/activity_star.png?v=3" style="border-radius: 50%;"
                                             class="widget_activity_img discord_presence_activity_img">
                                         <div class="discord_presence_description_block">
                                             <div
@@ -778,8 +944,7 @@
                                                         class="discord_presence_activity_subtitle widget_marquee_container"
                                                         data-widget-marquee>
                                                         <span id="discordActivitySubtitle"
-                                                            class="widget_marquee_content">•°♡ i l o v e y o u
-                                                            ♡•°*</span>
+                                                            class="widget_marquee_content">•°♡ i m i s s y o u ♡•°*</span>
                                                     </span>
                                                     <span class="discord_presence_activity_elapsed"
                                                         id="discordActivityElapsed"
@@ -806,17 +971,17 @@
                     <div class="couple_embed_container">
                         <div class="avatar_container">
                             <div class="avatar_container">
-                                <img src="assets/img/only_peo.png?v=3" class="avatar">
+                                <img src="assets/img/couple_avatar.jpg" class="avatar">
                             </div>
-                            <span class="name">Only péo péo</span>
+                            <span class="name">wi.lil</span>
                         </div>
                         <div class="heart_container">
-                            <span class="time" id="loveMessagePreview">Yêu Dấu</span>
+                            <span class="time" id="loveMessagePreview" style="font-size: 1.5rem;">zai dep</span>
                             <img src="assets/img/heartIcon_ed4826227a7a.webp" class="img">
                         </div>
                         <div class="avatar_container">
                             <a target="_blank" class="avatar_container">
-                                <img src="assets/img/avatar_e30eca6b59f7.png" class="avatar" id="partnerAvatar">
+                                <img src="assets/img/partner_avatar.png?v=1" class="avatar" id="partnerAvatar">
                             </a>
                             <span class="name" id="partnerName">wi.hl</span>
                         </div>
@@ -868,7 +1033,6 @@
         </div>
     </div>
     <!-- cloudflare challenge removed (offline) -->
-</body>
 <script src="./template/js/popper.min.js"></script>
 <script src="./template/js/tippy-bundle.umd.min.js"></script>
 <script src="./template/js/nouislider.min.js" type="text/javascript"></script>
@@ -910,32 +1074,14 @@
             reveals[i].classList.add('active');
         }
     }
-    const background = document.getElementById('background');
-    background.innerHTML = `
-            <div id="zyoShaderBackgroundEffect" style="position:fixed;inset:0;width:100vw;height:100dvh;overflow:hidden;pointer-events:none;"></div>
-        `
-    if (window.createShaderBackgroundEffect) {
-        const zyoShaderBioIsMobile = /Mobi|Android|iPhone|iPod/i.test(navigator.userAgent)
-            || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-        window.createShaderBackgroundEffect('#zyoShaderBackgroundEffect', {
-            effect: window.zyoShaderEffectFromBackgroundValue(19),
-            color: '#00f2fe',
-            animate: true,
-            width: () => window.innerWidth,
-            height: () => window.innerHeight,
-            renderScale: zyoShaderBioIsMobile ? 0.45 : 0.65,
-            maxDpr: zyoShaderBioIsMobile ? 1 : 1.5,
-            maxFPS: zyoShaderBioIsMobile ? 20 : 30,
-            powerPreference: 'low-power',
-        });
-    }
 </script>
 <script>
     function adjustChildPosition() {
         const parent = document.querySelector('.css_content_container');
         const child = document.querySelector('.bio_small_infomation');
+        if (!parent || !child) return;
         const styles = window.getComputedStyle(parent);
-        const borderRadius = parseFloat(styles.borderRadius);
+        const borderRadius = parseFloat(styles.borderRadius) || 25;
         const bottom = 12 + 0.16 * (borderRadius - 25);
         const left = 15 + 0.16 * (borderRadius - 25);
         child.style.bottom = `${bottom}px`;
@@ -946,54 +1092,22 @@
 <script>
     function revealAudioLike() {
         const revealsAudio = document.querySelector('.revealAudioLike');
-        revealsAudio.classList.add('active');
+        if (revealsAudio) revealsAudio.classList.add('active');
     }
-    revealAudioLike()
-
-    const likeButton = document.querySelector('#likeButton');
-    likeButton.addEventListener('change', function () {
-        const likeCount = document.querySelector('#likeCount');
-        let currentCount = likeCount.textContent.replace(/[,.]/g, '');
-
-        if (this.checked) {
-            likeCount.textContent = formatNumber(parseInt(currentCount) + 1);
-        } else {
-            likeCount.textContent = formatNumber(parseInt(currentCount) - 1);
-        }
-
-        fetch('./php/bioBE/bio_like', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ value: this.checked ? 1 : null, path: 'Huy_vox.Zzz', userLinkId: '16906' }),
-        })
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (responseData) {
-                if (responseData.type == "error") {
-                    showErrPopup(responseData.message);
-                    likeButton.checked = !likeButton.checked;
-                    let currentCount = likeCount.textContent.replace(/[,.]/g, '');
-                    likeCount.textContent = formatNumber(parseInt(currentCount) - 1);
-                } else {
-                    console.warn('Unhandled response type:', responseData.type);
-                }
-            })
-            .catch(function (error) {
-                console.error('Error:', error);
-            });
-    });
+    revealAudioLike();
 
     function formatNumber(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 </script>
 <script>
+    let overlayDone = false;
     function hideOverlay() {
+        if (overlayDone) return;
+        overlayDone = true;
         const overlay = document.querySelector('.overlay_audio');
         overlay.style.opacity = '0';
+        overlay.style.pointerEvents = 'none'; // không chặn click vào nút bên dưới trong 300ms mờ dần
         setTimeout(() => {
             overlay.style.display = 'none';
         }, 300);
@@ -1004,24 +1118,62 @@
         const playlist = [
             { src: "assets/media/audioLink_38ef6e2834b1.mp3", title: "baby...", totalDuration: "2:55", audioImage: "assets/img/audioImage_0b440956db7b.webp", hasLyrics: true, lyrics: { "source": "lrclib", "track": "3 Strikes • Terror Jr • 3 Strikes", "synced": "[00:00.99]Down for one night, like I got three strikes\n[00:02.95]Down for one night, like I got three strikes\n[00:05.72]Down for one night, like I got three strikes\n[00:08.62]Down for one night, like I got three strikes\n[00:11.74]Don me (ain\u0027t) -don me (yeah) -don me\n[00:14.99]Don me, called on me, called on me\n[00:17.94]Don me (ain\u0027t) -don me (yeah) -don me\n[00:20.78]Don me, called on me, called on me\n[00:24.04]Doing like 95 on the interstate\n[00:28.24]Looking for a dinner plate\n[00:30.39]I\u0027m hungry, you called me\n[00:33.19]To say you got something, and it\u0027s all me\n[00:36.15]Can you hold me down for one night, like I got three strikes?\n[00:42.04]I need you to free me, it\u0027s a prison inside my mind\n[00:48.01]Break me, taste me\n[00:51.33]Roll me up like the northern lights\n[00:54.06]Can you hold me down for one night, like I got three strikes?\n[00:59.55]Don me (ain\u0027t) -don me (yeah) -don me\n[01:02.66]Don me, called on me, called on me\n[01:05.61]Don me (ain\u0027t) -don me (yeah) -don me\n[01:08.36]Don me, called on me (like I got three strikes) called on me\n[01:11.61]Don me (ain\u0027t) -don me (yeah) -don me\n[01:14.59]Don me, called on me, called on me\n[01:17.46]Don me (ain\u0027t) -don me (yeah) -don me\n[01:20.48]Don me, called on me (like I got three strikes) called on me\n[01:23.67]Lit up, burnt out\n[01:26.82]Closer to God than we\u0027ve ever been now\n[01:29.82]Sipping slow, talking loud\n[01:33.07]Enough soul, we could sell out\n[01:35.66]Can you hold me down for one night, like I got three strikes?\n[01:41.44]I need you to free me, it\u0027s a prison inside my mind\n[01:47.86]Break me, taste me\n[01:50.91]Roll me up like the northern lights\n[01:53.86]Can you hold me down for one night, like I got three strikes?\n[01:59.09]Don me (ain\u0027t) -don me (yeah) -don me\n[02:01.86]Don me, called on me, called on me\n[02:04.86]Don me (ain\u0027t) -don me (yeah) -don me\n[02:07.94]Don me, called on me (like I got three strikes)\n[02:11.04]Don me (ain\u0027t) -don me (yeah) -don me\n[02:13.71]Don me, called on me, called on me\n[02:16.79]Don me (ain\u0027t) -don me (yeah) -don me\n[02:19.75]Don me, called on me (like I got three strikes) called on me\n[02:23.60](Ain\u0027t) -don me (yeah) -don me\n[02:26.03]Don me, called on me, called on me\n[02:28.99]Don me (ain\u0027t) -don me (yeah) -don me\n[02:31.81]Don me, called on me (like I got three strikes)\n[02:34.97]Don me (ain\u0027t) -don me (yeah) -don me\n[02:37.95]Don me, called on me, called on me\n[02:40.96]Don me (ain\u0027t) -don me (yeah) -don me\n[02:44.13]Don me, called on me (like I got three strikes) called on me\n[02:47.05]Like I got three strikes\n[02:48.03]Like I got three strikes\n[02:49.42]Like I got three strikes\n[02:51.24]Like I got three strikes\n[02:53.00]" } },
             { src: "assets/media/audioLink_18bb0505aea4.mp3", title: "...I Miss...", totalDuration: "2:31", audioImage: "assets/img/audioImage_86e9783412ac.webp", hasLyrics: true, lyrics: { "source": "lrclib", "track": "Earrings • Malcolm Todd • Sweet Boy", "synced": "[00:01.03] Her love is in your head\n[00:02.96] You lost your earrings in her bed\n[00:06.36] You couldn\u0027t tell her that you lost them\n[00:09.41] \u0027Cause you\u0027re scared and you\u0027re not talking\n[00:12.49] So you think of what to say\n[00:15.33] Then save it for another day\n[00:18.52] \u0027Cause you just never had the heart\n[00:21.57] Now they just drift further apart\n[00:24.12] From you\n[00:30.13] From you\n[00:36.15] From you\n[00:41.83] From you\n[00:48.22]\n[01:12.69] Her love is in your head\n[01:14.99] You lost your earrings in her bed\n[01:18.19] You couldn\u0027t tell her that you lost them\n[01:21.66] \u0027Cause you\u0027re scared and you\u0027re not talking\n[01:24.56] So you think of what to say\n[01:26.93] Then save it for another day\n[01:30.14] \u0027Cause you just never had the heart\n[01:33.04] Now they just drift further apart\n[01:36.32] From you\n[01:37.77] Extra, extra read all about it\n[01:40.28] Malcolm\u0027s in his feelings and he can\u0027t get out of it (from you)\n[01:43.70] Extra, extra read all about it\n[01:46.34] Malcolm\u0027s in his feelings and he can\u0027t get out of it (from you)\n[01:49.60] Extra, extra read all about it\n[01:52.37] Malcolm\u0027s in his feelings and he can\u0027t get out of it (from you)\n[01:55.36] Extra, extra read all about it\n[01:58.47] Malcolm\u0027s in his feelings and he can\u0027t get out of it\n[02:00.97] From you\n[02:06.23] From you\n[02:11.80] From you\n[02:13.23] Extra, extra read all about it\n[02:16.31] Malcolm\u0027s in his feelings and he can\u0027t get out of it (from you)\n[02:19.02] Extra, extra read all about it\n[02:22.13] Malcolm\u0027s in his feelings and he can\u0027t get out of it\n[02:25.04] Can\u0027t get out of it\n[02:26.94] Can\u0027t get out of it\n[02:29.21] I hope you like my mixtape\n[02:30.66]" } },
-            { src: "assets/media/audioLink_ef1a7a08f097.mp3", title: "...You", totalDuration: "3:05", audioImage: "assets/img/audioImage_2b17a28783f4.webp", hasLyrics: true, lyrics: { "source": "lrclib", "track": "50 Feet • SoMo - Topic • 50 Feet", "synced": "[00:00.45] 50, 50 feet up underground\n[00:04.87] You know I keep my feet on the sound\n[00:08.81] 50, 50 feet up underground\n[00:12.38] You know I keep my feet on the sound\n[00:15.77] I\u0027m around, baby, I\u0027m around\n[00:19.59] Underground, but you know I\u0027m around\n[00:23.31] I was down, lately I\u0027ve been down (down)\n[00:27.10] Ran around, now I\u0027m back I\u0027m found\n[00:30.92] Pour the wine up\n[00:33.09] You\u0027re silent (huh?)\n[00:35.26] Why though? (Oh)\n[00:36.92] You know you like\n[00:38.73] This style of (uh)\n[00:40.65] This side of\n[00:42.60] I know you like it\n[00:44.81] I fucked you right\n[00:46.55] I did, I loved you every single night\n[00:48.70] You know you like, that, dear\n[00:50.74] You know I like it when I ride, you owe me all of it\n[00:54.52] You told me every single time, I\u0027m holding on to it\n[00:58.37] I\u0027m holding everything that\u0027s mine\n[01:00.21] I fucked you right\n[01:01.34] I did, I loved you every single night\n[01:04.03] You know you like, that, dear\n[01:05.93] You know I like it when I ride, you owe me all of it\n[01:09.71] You told me every single time, I\u0027m holding on to it\n[01:13.64] I\u0027m holding everything that\u0027s mine, you know it\n[01:17.18] 50 50 50次的宽恕\n[01:20.90] 但我已经 fed up with the shit that you do\n[01:24.68] 一直一直忙着我的工作\n[01:28.58] I guess you\u0027re the reason I don\u0027t love any\n[01:31.46] 魔鬼控制了你\n[01:33.75] Now you\u0027re my worst enemy\n[01:35.59] But God knows I loved so much I could die\n[01:37.35] But when I need you the most, 你也不在\n[01:39.31] 什么都给你你什么都 throw\n[01:41.20] Side bitch is calling you, you\u0027re on the go\n[01:42.95] You know\n[01:45.03] You know what I mean\n[01:46.02] I loved you right\n[01:47.34] I did, I loved you every single night\n[01:49.79] ￼即使你欺骗我, I never stopped crying at night\n[01:53.54] 伤透了我的心 歌唱我的心给你听￼\n[01:57.38] 即使你不配我 I think about you all the time\n[02:00.94] I fucked you right\n[02:02.64] I did, I loved you every single night\n[02:04.79] You know you like, that, dear\n[02:06.79] You know I like it when I ride, you owe me all of it\n[02:10.45] You told me every single time, I\u0027m holding on to it\n[02:14.34] I\u0027m holding everything that\u0027s mine, you know it\n[02:17.61] 50, 50 feet up underground\n[02:21.63] You know I keep my feet on the sound\n[02:25.67] 50, 50 feet up underground\n[02:29.05] You know I keep my feet on the sound\n[02:32.36]\n[02:48.35] I\u0027m around, baby, I\u0027m around\n[02:52.11] Underground, but you know I\u0027m around\n[02:55.87] I was down, lately I\u0027ve been down (down)\n[03:00.71] Oh-oh, oh-oh\n[03:02.80]" } },
+            { src: "assets/media/audioLink_ef1a7a08f097.mp3", title: "...You", totalDuration: "3:05", audioImage: "assets/img/audioImage_2b17a28783f4.webp", hasLyrics: true, lyrics: { "source": "lrclib", "track": "50 Feet • SoMo - Topic • 50 Feet", "synced": "[00:00.45] 50, 50 feet up underground\n[00:04.87] You know I keep my feet on the sound\n[00:08.81] 50, 50 feet up underground\n[00:12.38] You know I keep my feet on the sound\n[00:15.77] I\u0027m around, baby, I\u0027m around\n[00:19.59] Underground, but you know I\u0027m around\n[00:23.31] I was down, lately I\u0027ve been down (down)\n[00:27.10] Ran around, now I\u0027m back I\u0027m found\n[00:30.92] Pour the wine up\n[00:33.09] You\u0027re silent (huh?)\n[00:35.26] Why though? (Oh)\n[00:36.92] You know you like\n[00:38.73] This style of (uh)\n[00:40.65] This side of\n[00:42.60] I know you like it\n[00:44.81] I fucked you right\n[00:46.55] I did, I loved you every single night\n[00:48.70] You know you like, that, dear\n[00:50.74] You know I like it when I ride, you owe me all of it\n[00:54.52] You told me every single time, I\u0027m holding on to it\n[00:58.37] I\u0027m holding everything that\u0027s mine\n[01:00.21] I fucked you right\n[01:01.34] I did, I loved you every single night\n[01:04.03] You know you like, that, dear\n[01:05.93] You know I like it when I ride, you owe me all of it\n[01:09.71] You told me every single time, I\u0027m holding on to it\n[01:13.64] I\u0027m holding everything that\u0027s mine, you know it\n[01:17.18] Forgiving you 50, 50, 50 times\n[01:20.90] fed up with the shit that you do\n[01:24.68] Constantly, endlessly busy with my work\n[01:28.58] I guess you\u0027re the reason I don\u0027t love any\n[01:31.46] The devil has taken control of you\n[01:33.75] Now you\u0027re my worst enemy\n[01:35.59] But God knows I loved so much I could die\n[01:37.35] But when I need you the most\n[01:41.20] Side bitch is calling you, you\u0027re on the go\n[01:42.95] You know\n[01:45.03] You know what I mean\n[01:46.02] I loved you right\n[01:47.34] I did, I loved you every single night\n[01:49.79] I never stopped crying at night\n[01:53.54] You\u0027ve broken my heart—now I sing my heart out to you\n[01:57.38] I think about you all the time\n[02:00.94] I fucked you right\n[02:02.64] I did, I loved you every single night\n[02:04.79] You know you like, that, dear\n[02:06.79] You know I like it when I ride, you owe me all of it\n[02:10.45] You told me every single time, I\u0027m holding on to it\n[02:14.34] I\u0027m holding everything that\u0027s mine, you know it\n[02:17.61] 50, 50 feet up underground\n[02:21.63] You know I keep my feet on the sound\n[02:25.67] 50, 50 feet up underground\n[02:29.05] You know I keep my feet on the sound\n[02:32.36]\n[02:48.35] I\u0027m around, baby, I\u0027m around\n[02:52.11] Underground, but you know I\u0027m around\n[02:55.87] I was down, lately I\u0027ve been down (down)\n[03:00.71] Oh-oh, oh-oh\n[03:02.80]" } },
         ];
         let currentTrackIndex = 0;
+        let coverToken = 0;        // chống ảnh bìa của bài cũ load xong muộn rồi đè lên bài mới
+        let pausedByMute = false;  // nhạc bị dừng vì kéo volume về 0 (chứ không phải do người dùng bấm pause)
+        let isSeeking = false;     // đang kéo thanh tua: không cho timeupdate giật thanh về lại
+
+        const PLAY_ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M10 16.5v-9l6 4.5M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2"></path></svg>`;
+        const PAUSE_ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15 16h-2V8h2m-4 8H9V8h2m1-6A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2"></path></svg>`;
+
+        // Icon luôn phản ánh trạng thái thật của <audio> (trước đây chỉ đổi khi bấm nút play/pause)
+        function setPlayIcon(playing) {
+            const btn = document.getElementById('playPause');
+            if (!btn) return;
+            const want = playing ? 'playing' : 'paused';
+            if (btn.dataset.state === want) return;
+            btn.dataset.state = want;
+            btn.innerHTML = playing ? PAUSE_ICON_SVG : PLAY_ICON_SVG;
+        }
+
+        // audio.play() trả về Promise: đổi bài / bấm nhanh sẽ làm nó bị hủy (AbortError) => nuốt lỗi đó
+        function safePlay() {
+            const p = audio.play();
+            if (p && typeof p.catch === 'function') {
+                p.catch(function (err) {
+                    if (err && err.name === 'AbortError') return;
+                    setPlayIcon(false); // trình duyệt chặn autoplay / file lỗi
+                });
+            }
+        }
+        playlist.forEach(function (t) { if (t.audioImage) { new Image().src = t.audioImage; } });
         function playTrack(index) {
             if (index >= 0 && index < playlist.length) {
                 if (window.zyoAudioLyricsRequired && !playlist[index].hasLyrics) return;
                 currentTrackIndex = index;
                 audio.src = playlist[index].src;
                 if (typeof zyoSetCurrentAudioLyrics === 'function') zyoSetCurrentAudioLyrics(playlist[index]);
-                audio.play();
+                safePlay();
                 const musicName = document.getElementById('musicName');
                 const totalTimeDisplay = document.getElementById('totalTime');
                 const audioAvatarContainer = document.getElementById('audio_avatar_container');
                 if (playlist[index].audioImage) {
-                    audioAvatarContainer.innerHTML =
-                        `
-                                    <img src="${playlist[index].audioImage}" alt="Audio Image" class="audio_image">
-                                `
+                    // Swap the cover only after the new image is loaded, so no blank/white flash
+                    const nextSrc = playlist[index].audioImage;
+                    const coverId = ++coverToken;
+                    const curImg = audioAvatarContainer.querySelector('img.audio_image');
+                    if (curImg) {
+                        if (curImg.getAttribute('src') !== nextSrc) {
+                            const pre = new Image();
+                            pre.onload = pre.onerror = function () { if (coverId === coverToken) curImg.src = nextSrc; };
+                            pre.src = nextSrc;
+                        }
+                    } else {
+                        audioAvatarContainer.innerHTML =
+                            `<img src="${nextSrc}" alt="Audio Image" class="audio_image">`;
+                    }
                 } else {
                     audioAvatarContainer.innerHTML =
                         `
@@ -1098,13 +1250,19 @@
 
             let isProgrammaticUpdate = false;
 
+            slider.noUiSlider.on('start', function () { isSeeking = true; });
+            slider.noUiSlider.on('end', function () { isSeeking = false; });
+
             slider.noUiSlider.on('update', function (values, handle) {
                 if (isProgrammaticUpdate) {
                     return;
                 }
+                // chưa có metadata (duration = NaN/Infinity) thì không tua, tránh gán currentTime = NaN
+                if (!isFinite(audio.duration) || !audio.duration) {
+                    return;
+                }
                 const valueInt = values[handle];
-                const seekTime = (valueInt / 100) * (audio.duration || 0);
-                audio.currentTime = seekTime;
+                audio.currentTime = (valueInt / 100) * audio.duration;
             });
 
             return {
@@ -1123,38 +1281,56 @@
             return `${mins}:${secs < 10 ? "0" + secs : secs}`;
         }
         function updateTrack() {
-            sliderInstance.set((audio.currentTime / audio.duration) * 100 || 0);
+            if (!isSeeking) sliderInstance.set((audio.currentTime / audio.duration) * 100 || 0);
             currentTimeDisplay.textContent = formatTime(audio.currentTime);
         }
         playPauseButton.addEventListener("click", () => {
             if (audio.paused) {
-                audio.play();
-                playPauseButton.innerHTML = `
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15 16h-2V8h2m-4 8H9V8h2m1-6A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2"></path></svg>
-                        `;
+                pausedByMute = false;
+                safePlay();
             } else {
                 audio.pause();
-                playPauseButton.innerHTML = `
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M10 16.5v-9l6 4.5M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2"></path></svg>
-                        `
             }
         });
+        // Icon bám theo trạng thái thật của audio
+        audio.addEventListener('play', () => setPlayIcon(true));
+        let errorStreak = 0;
+        audio.addEventListener('playing', () => { errorStreak = 0; setPlayIcon(true); });
+        audio.addEventListener('pause', () => setPlayIcon(false));
+        audio.addEventListener('error', () => {
+            setPlayIcon(false);
+            // file nhạc lỗi/thiếu: thử bài kế tiếp, dừng khi đã thử hết playlist (không lặp vô hạn)
+            if (++errorStreak < playlist.length) playTrack((currentTrackIndex + 1) % playlist.length);
+        });
+        setPlayIcon(!audio.paused);
+
         document.addEventListener("keydown", (e) => {
+            if (e.ctrlKey || e.metaKey || e.altKey) return;
+            const t = e.target;
+            const tag = t && t.tagName;
+            if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable)) return;
+
             if (e.code === "Space") {
+                // Đang focus nút/link: để trình duyệt tự xử lý (tránh bấm Space bị toggle 2 lần)
+                if (tag === 'BUTTON' || tag === 'A') return;
+                e.preventDefault();
+                if (e.repeat) return;           // giữ phím Space không được nhấp nháy play/pause
                 playPauseButton.click();
+                return;
+            }
+
+            if (e.code === "ArrowLeft" || e.code === "ArrowRight") {
+                // Đang focus thanh slider: noUiSlider tự xử lý phím mũi tên, đừng tua thêm lần nữa
+                if (t && t.closest && t.closest('.noUi-target')) return;
+                if (!isFinite(audio.duration)) return;
+                const delta = e.code === "ArrowLeft" ? -5 : 5;
+                audio.currentTime = Math.max(0, Math.min(audio.duration, audio.currentTime + delta));
             }
         });
-        document.addEventListener("keydown", (e) => {
-            if (e.code === "ArrowLeft") {
-                audio.currentTime -= 5;
-            }
+        totalTimeDisplay.textContent = playlist[currentTrackIndex].totalDuration;
+        audio.addEventListener('loadedmetadata', () => {
+            if (isFinite(audio.duration)) totalTimeDisplay.textContent = formatTime(audio.duration);
         });
-        document.addEventListener("keydown", (e) => {
-            if (e.code === "ArrowRight") {
-                audio.currentTime += 5;
-            }
-        });
-        totalTimeDisplay.textContent = '2:55';
         audio.addEventListener("timeupdate", updateTrack);
         audio.addEventListener("timeupdate", () => zyoUpdateAudioLyricsDisplay(audio.currentTime));
         createSlider('slider1', 'sliderValue1', '');
@@ -1168,17 +1344,21 @@
         slider.on('update', function (values, handle) {
             const volumeValue = parseFloat(values[handle]);
 
-            audio.volume = volumeValue / 100;
+            audio.volume = Math.min(1, Math.max(0, volumeValue / 100));
 
             if (volumeValue === 0) {
-                audio.pause();
+                if (!audio.paused) { pausedByMute = true; audio.pause(); }
                 defs.innerHTML = `
-                    <mask id="volumeMute"><mask id="volumeMute1" width="13" height="13" x="30" y="18" maskUnits="userSpaceOnUse" style="mask-type: alpha;"><path d="M30 18h13v13H30z"/></mask><g fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4"><g stroke-linecap="round" mask="url(#volumeMute1)"><path d="m40.735 20.286l-8.486 8.485m.001-8.485l8.485 8.485"/></g><path fill="#555" d="M24 6v36c-7 0-12.201-9.16-12.201-9.16H6a2 2 0 0 1-2-2V17.01a2 2 0 0 1 2-2h5.799S17 6 24 6Z"/></g></mask>
+                    <mask id="volumeMute">
+                        <g fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#555" d="M24 6v36c-7 0-12.201-9.16-12.201-9.16H6a2 2 0 0 1-2-2V17.01a2 2 0 0 1 2-2h5.799S17 6 24 6Z"/>
+                            <path stroke-linecap="round" d="m32.5 18.5 11 11m0-11-11 11"/>
+                        </g>
+                    </mask>
                     `;
                 mask.setAttribute("mask", "url(#volumeMute)");
             } else {
-                audio.play().catch(error => {
-                });
+                if (pausedByMute) { pausedByMute = false; safePlay(); } // chỉ phát lại nếu CHÍNH việc mute đã dừng nhạc
                 defs.innerHTML = `
                     <mask id="volumeMedium"><g fill="none" stroke="#fff" stroke-width="4"><path fill="#555" stroke-linejoin="round" d="M24 6v36c-7 0-12.201-9.16-12.201-9.16H6a2 2 0 0 1-2-2V17.01a2 2 0 0 1 2-2h5.799S17 6 24 6Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M32 15a12 12 0 0 1 1.684 1.859A12.07 12.07 0 0 1 36 24c0 2.654-.846 5.107-2.278 7.09A12 12 0 0 1 32 33"/><path stroke-linecap="round" d="M34.236 41.186C40.084 37.696 44 31.305 44 24c0-7.192-3.796-13.496-9.493-17.02"/></g></mask>
                     `;
@@ -1203,7 +1383,12 @@
                 slider.set(0);
 
                 defs.innerHTML = `
-                    <mask id="volumeMute"><mask id="volumeMute1" width="13" height="13" x="30" y="18" maskUnits="userSpaceOnUse" style="mask-type: alpha;"><path d="M30 18h13v13H30z"/></mask><g fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4"><g stroke-linecap="round" mask="url(#volumeMute1)"><path d="m40.735 20.286l-8.486 8.485m.001-8.485l8.485 8.485"/></g><path fill="#555" d="M24 6v36c-7 0-12.201-9.16-12.201-9.16H6a2 2 0 0 1-2-2V17.01a2 2 0 0 1 2-2h5.799S17 6 24 6Z"/></g></mask>
+                    <mask id="volumeMute">
+                        <g fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#555" d="M24 6v36c-7 0-12.201-9.16-12.201-9.16H6a2 2 0 0 1-2-2V17.01a2 2 0 0 1 2-2h5.799S17 6 24 6Z"/>
+                            <path stroke-linecap="round" d="m32.5 18.5 11 11m0-11-11 11"/>
+                        </g>
+                    </mask>
                     `;
                 mask.setAttribute("mask", "url(#volumeMute)");
             }
@@ -1211,353 +1396,186 @@
     }
     audio.volume = 1;
 </script>
-<script defer>
-    const zyoViewProofConfig = {
-        endpoint: "https:\/\/zyo.lol\/php\/api\/view_count",
-        userId: 16906,
-        timestamp: "1787632230",
-        signature: "58ea86eb579e2cb77bfe3b451dbdc92d1ab0c8aab336f4c854a673aead96bf9a",
-        proofEnabled: true,
-        pow: { "seed": "4a7bc5791f080a6c", "difficulty": 18, "timestamp": 1787632230, "blob": "4a7bc5791f080a6c.18.1787632230.428eadf4d673.16906.profile_view.c8e83c8742b153c62713590b12a76348" },
-        powWorkerUrl: "./template/js/pow_solver.js",
-        turnstileEnabled: true,
-        turnstileSiteKey: "0x4AAAAAAEYMsvotTS0j9mY0",
-        turnstileCdata: "c3e6a6301a30a2cd2340a006cd744d23"
-    };
+<script>
+    (function () {
+        var API = window.ZYO_COUNTER_API || '/api/counter';
+        var TIMEOUT_MS = 8000;
+        var DEBOUNCE_MS = 250;
 
-    function zyoSolveViewPow() {
-        return new Promise((resolve, reject) => {
-            if (!window.Worker) {
-                reject(new Error('worker_unavailable'));
-                return;
-            }
-
-            const worker = new Worker(zyoViewProofConfig.powWorkerUrl);
-            const timeout = setTimeout(() => {
-                worker.terminate();
-                reject(new Error('pow_timeout'));
-            }, 25000);
-
-            worker.onmessage = (event) => {
-                if (!event.data || event.data.nonce === null || typeof event.data.nonce === 'undefined') {
-                    return;
-                }
-                clearTimeout(timeout);
-                worker.terminate();
-                resolve(String(event.data.nonce));
-            };
-            worker.onerror = () => {
-                clearTimeout(timeout);
-                worker.terminate();
-                reject(new Error('pow_failed'));
-            };
-            worker.postMessage({
-                seed: zyoViewProofConfig.pow.seed,
-                difficulty: zyoViewProofConfig.pow.difficulty
-            });
-        });
-    }
-
-    function zyoGetViewTurnstileToken() {
-        if (!zyoViewProofConfig.turnstileEnabled) {
-            return Promise.resolve('');
+        function store(key, value) {
+            try {
+                if (value === undefined) return window.localStorage.getItem(key);
+                if (value === null) window.localStorage.removeItem(key);
+                else window.localStorage.setItem(key, value);
+            } catch (e) { }
+            return null;
         }
 
-        return new Promise((resolve, reject) => {
-            const container = document.createElement('div');
-            container.style.position = 'fixed';
-            container.style.width = '0';
-            container.style.height = '0';
-            container.style.overflow = 'hidden';
-            container.setAttribute('aria-hidden', 'true');
-            document.body.appendChild(container);
-
-            let settled = false;
-            const finish = (callback, value) => {
-                if (settled) return;
-                settled = true;
-                callback(value);
-            };
-            const render = () => {
-                try {
-                    const widgetId = window.turnstile.render(container, {
-                        sitekey: zyoViewProofConfig.turnstileSiteKey,
-                        execution: 'execute',
-                        action: 'zyo_view',
-                        cData: zyoViewProofConfig.turnstileCdata,
-                        callback: (token) => finish(resolve, String(token || '')),
-                        'error-callback': () => finish(reject, new Error('turnstile_failed')),
-                        'expired-callback': () => finish(reject, new Error('turnstile_expired')),
-                        'timeout-callback': () => finish(reject, new Error('turnstile_timeout'))
-                    });
-                    window.turnstile.execute(widgetId);
-                } catch (error) {
-                    finish(reject, error);
-                }
-            };
-
-            if (window.turnstile) {
-                render();
-                return;
-            }
-
-            window.zyoViewTurnstileReady = render;
-            const script = document.createElement('script');
-            script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=zyoViewTurnstileReady';
-            script.async = true;
-            script.defer = true;
-            script.onerror = () => finish(reject, new Error('turnstile_unavailable'));
-            document.head.appendChild(script);
-        });
-    }
-
-    const zyoViewProofPromise = zyoViewProofConfig.proofEnabled
-        ? zyoSolveViewPow()
-            .then((powNonce) => zyoGetViewTurnstileToken().then((turnstileToken) => [powNonce, turnstileToken]))
-            .catch(() => null)
-        : Promise.resolve(['', '']);
-
-    const zyoAnalyticsConfig = {
-        endpoint: "https:\/\/zyo.lol\/php\/api\/analytics_event",
-        profileUserId: 16906,
-        viewerUserId: 0,
-        referrer: null,
-        timestamp: "1787632230",
-        signatures: { "profile_view": "452c85a0bed5415e68a79153d1dbfb086c26794a493ac30eb89faefe760586e5", "link_click": "ccb940e712583738039509dc55a3b4857268aef61dfa64456ada959afc8c8bc1", "widget_click": "43780a413c468c4c50cf040519b91db3689e83ec5334198528e46030f5f427ad", "audio_play": "e7295ce7f5560c82220eba58a0967d2652b8805192d92d4be71d1710e6bb4fc4", "discord_profile_click": "1363b2098935ad34a941917b2415c33e79df9815b4cdd8dec17ec22ca3821068", "second_tab_open": "208a212804e61927917039bbcd6845c8bc20a38be9e43f7b74ea32cf253b32fa", "like": "7f6433ac3e15e6c467af5f603c361affcc60b22b3266ccfc278c66ae7fe84707" }
-    };
-
-    function zyoNormalizeAnalyticsEndpoint(rawEndpoint) {
-        const value = String(rawEndpoint || '').trim();
-        if (!value) {
-            return '/php/api/analytics_event';
-        }
-
+        // Owner mode: open the site once with ?owner=YOUR_OWNER_KEY to stop counting yourself.
+        // Open ?owner=off to turn it off again.
         try {
-            const url = new URL(value, window.location.origin);
-            url.pathname = url.pathname.replace(/\/{2,}/g, '/');
-            return url.toString();
-        } catch (error) {
-            return value.replace(/([^:]\/)\/+/g, '$1');
-        }
-    }
-
-    const zyoAnalyticsQueue = new Map();
-    const zyoAnalyticsTrackedKeys = new Set();
-    let zyoAnalyticsFlushTimer = null;
-    let zyoAnalyticsVerified = !zyoViewProofConfig.proofEnabled;
-
-    function zyoAnalyticsEventKey(eventType, targetType, targetId) {
-        return [eventType, targetType || '', targetId || ''].join('|');
-    }
-
-    function zyoSendAnalyticsBatch(events, useBeacon = false) {
-        if (!Array.isArray(events) || events.length === 0 || !navigator.sendBeacon && !window.fetch) {
-            return;
-        }
-
-        const payload = JSON.stringify({
-            profile_user_id: zyoAnalyticsConfig.profileUserId,
-            viewer_user_id: zyoAnalyticsConfig.viewerUserId,
-            timestamp: zyoAnalyticsConfig.timestamp,
-            events: events,
-            signatures: zyoAnalyticsConfig.signatures
-        });
-
-        const analyticsEndpoint = zyoNormalizeAnalyticsEndpoint(zyoAnalyticsConfig.endpoint);
-        if (!analyticsEndpoint) return;
-
-        if (useBeacon && navigator.sendBeacon) {
-            const blob = new Blob([payload], { type: 'application/json' });
-            if (navigator.sendBeacon(analyticsEndpoint, blob)) {
-                return;
+            var params = new URLSearchParams(window.location.search);
+            var ownerParam = params.get('owner');
+            if (ownerParam) {
+                store('zyo_owner', ownerParam === 'off' ? null : ownerParam);
+                params.delete('owner');
+                var qs = params.toString();
+                history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
             }
+        } catch (e) { }
+        var owner = store('zyo_owner') || '';
+
+        var vid = store('zyo_vid');
+        if (!vid) {
+            vid = (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
+                : 'v' + Date.now().toString(36) + Math.random().toString(36).slice(2, 12);
+            store('zyo_vid', vid);
         }
 
-        fetch(analyticsEndpoint, {
-            method: 'POST',
-            keepalive: true,
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Timestamp': zyoAnalyticsConfig.timestamp,
-                'X-Sign': zyoAnalyticsConfig.signatures.profile_view || ''
-            },
-            body: payload
-        }).catch(() => { });
-    }
+        var likeBtn = document.getElementById('likeButton');
+        var likeEl = document.getElementById('likeCount');
+        var viewEl = document.getElementById('viewCount');
 
-    function zyoFlushAnalyticsQueue(useBeacon = false) {
-        if (zyoAnalyticsFlushTimer) {
-            clearTimeout(zyoAnalyticsFlushTimer);
-            zyoAnalyticsFlushTimer = null;
-        }
-        if (!zyoAnalyticsVerified) {
-            return;
-        }
-        const events = Array.from(zyoAnalyticsQueue.values()).slice(0, 40);
-        zyoAnalyticsQueue.clear();
-        zyoSendAnalyticsBatch(events, useBeacon);
-    }
-
-    function zyoQueueAnalyticsEvent(eventType, targetType = '', targetId = '', metadata = {}, flushDelay = 3500) {
-        if (!zyoAnalyticsConfig.signatures[eventType]) {
-            return;
+        function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+        function readCount(el) {
+            var n = parseInt(String(el ? el.textContent : '').replace(/[^\d]/g, ''), 10);
+            return isNaN(n) ? 0 : n;
         }
 
-        const safeTargetId = String(targetId || '').slice(0, 180);
-        const key = zyoAnalyticsEventKey(eventType, targetType, safeTargetId);
-        if (zyoAnalyticsTrackedKeys.has(key)) {
-            return;
-        }
-        zyoAnalyticsTrackedKeys.add(key);
+        // ---- State -------------------------------------------------------
+        // serverLikes: số like server báo, đã tính cả trạng thái `serverLiked` của mình.
+        // wantLiked  : trạng thái người dùng đang muốn (đổi tức thì khi click).
+        // Số hiển thị = serverLikes + chênh lệch giữa wantLiked và serverLiked.
+        var serverLikes = readCount(likeEl);
+        var serverLiked = false;
+        var wantLiked = false;
+        var inFlight = false;     // chỉ cho phép 1 request like/unlike tại một thời điểm
+        var apiOk = false;        // đã từng gọi API thành công
+        var offline = false;      // không có API => lưu like trong trình duyệt này
+        var touched = false;      // người dùng đã bấm like trong lúc trang còn đang tải
+        var timer = null;
 
-        const current = zyoAnalyticsQueue.get(key);
-        if (current) {
-            return;
-        }
-
-        zyoAnalyticsQueue.set(key, {
-            event_type: eventType,
-            target_type: String(targetType || '').slice(0, 60),
-            target_id: safeTargetId,
-            event_count: 1,
-            metadata: metadata || {}
-        });
-
-        if (zyoAnalyticsQueue.size >= 20) {
-            zyoFlushAnalyticsQueue(false);
-            return;
-        }
-
-        if (flushDelay <= 0) {
-            zyoFlushAnalyticsQueue(false);
-            return;
-        }
-
-        if (!zyoAnalyticsFlushTimer) {
-            zyoAnalyticsFlushTimer = setTimeout(() => zyoFlushAnalyticsQueue(false), flushDelay);
-        }
-    }
-
-    function zyoTrackAnalyticsEvent(eventType, targetType = '', targetId = '', metadata = {}) {
-        zyoQueueAnalyticsEvent(eventType, targetType, targetId, metadata);
-    }
-
-    function zyoAnalyticsWidgetFromElement(targetElement) {
-        return targetElement ? targetElement.closest('.zyo_profile_widget, .widget_profile_container, .bio_widgets_grid .css_content_container') : null;
-    }
-
-    function zyoAnalyticsWidgetType(widget) {
-        if (!widget) return '';
-        return String(widget.dataset.profileWidgetType || widget.dataset.widgetType || widget.dataset.bioWidgetType || widget.className || 'widget').slice(0, 120);
-    }
-
-    function zyoTrackAnalyticsLink(targetElement, targetType = 'link') {
-        if (!targetElement) return;
-
-        let href = '';
-        if (targetElement.matches('a[href]')) {
-            href = targetElement.getAttribute('href') || '';
-        } else {
-            const socialParent = targetElement.closest('button.svg_item, .svg_item, .svg_text, .socialText, .social_text, [data-social-url], [data-analytics-href], [onclick*="openPopupPreview"]');
-            const sourceElement = socialParent || targetElement;
-            const hiddenText = targetElement.matches('.svg_text, .socialText, .social_text')
-                ? targetElement
-                : sourceElement.querySelector('.svg_text, .socialText, .social_text');
-            const onclickValue = [
-                targetElement.getAttribute('onclick'),
-                sourceElement.getAttribute('onclick')
-            ].filter(Boolean).join(' ');
-            const popupLink = onclickValue.match(/openPopupPreview\(['"](.+?)['"]\)/);
-            href = targetElement.dataset.analyticsHref
-                || targetElement.dataset.socialUrl
-                || sourceElement.dataset.analyticsHref
-                || sourceElement.dataset.socialUrl
-                || (popupLink ? popupLink[1] : '')
-                || targetElement.getAttribute('data-tippy-content')
-                || sourceElement.getAttribute('data-tippy-content')
-                || (hiddenText ? hiddenText.textContent : '')
-                || '';
-        }
-
-        href = String(href).trim();
-        if (!href || href.startsWith('#') || href.startsWith('javascript:')) {
-            return;
-        }
-
-        const isDiscordProfile = href.includes('discord.com/users/');
-        const widget = zyoAnalyticsWidgetFromElement(targetElement);
-        const finalTargetType = widget && targetType === 'link' ? 'widget_link' : targetType;
-        zyoTrackAnalyticsEvent(isDiscordProfile ? 'discord_profile_click' : 'link_click', finalTargetType, href, {
-            widget_type: widget ? zyoAnalyticsWidgetType(widget) : ''
-        });
-    }
-
-    document.addEventListener('click', function (event) {
-        let trackedPrimaryClick = false;
-        const widget = zyoAnalyticsWidgetFromElement(event.target);
-        const anchor = event.target.closest('a[href]');
-        if (anchor) {
-            zyoTrackAnalyticsLink(anchor, widget ? 'widget_link' : 'link');
-            trackedPrimaryClick = true;
-        } else {
-            const socialButton = event.target.closest('button.svg_item, .svg_item, .svg_text, .socialText, .social_text, [data-social-url], [data-analytics-href], [onclick*="openPopupPreview"]');
-            if (socialButton) {
-                zyoTrackAnalyticsLink(socialButton, 'social');
-                trackedPrimaryClick = true;
+        function shownLikes() {
+            var n = serverLikes;
+            if (!owner) {                           // like của owner không được tính
+                if (wantLiked && !serverLiked) n += 1;
+                if (!wantLiked && serverLiked) n -= 1;
             }
+            return Math.max(0, n);
         }
 
-        if (widget && !trackedPrimaryClick) {
-            const service = zyoAnalyticsWidgetType(widget);
-            zyoTrackAnalyticsEvent('widget_click', 'widget', String(service).slice(0, 120));
+        function render() {
+            if (likeEl) likeEl.textContent = fmt(shownLikes());
+            if (likeBtn) likeBtn.checked = wantLiked;
         }
 
-        if (event.target.closest('[data-second-tab], .second_tab, .second-tab')) {
-            zyoTrackAnalyticsEvent('second_tab_open', 'second_tab', 'open');
-        }
-    }, { passive: true });
-
-    document.querySelectorAll('audio, video#video').forEach((audio) => {
-        audio.addEventListener('play', function () {
-            if (audio.dataset.analyticsPlayed === '1') return;
-            audio.dataset.analyticsPlayed = '1';
-            zyoTrackAnalyticsEvent('audio_play', 'audio', audio.currentSrc || audio.src || 'audio');
-        }, { passive: true });
-    });
-
-    window.addEventListener('pagehide', () => zyoFlushAnalyticsQueue(true));
-    document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'hidden') {
-            zyoFlushAnalyticsQueue(true);
-        }
-    });
-
-    setTimeout(async () => {
-        try {
-            const proof = await zyoViewProofPromise;
-            if (!proof) return;
-            const [powNonce, turnstileToken] = proof;
-            const response = await fetch(zyoViewProofConfig.endpoint, {
+        function call(action) {
+            var controller = window.AbortController ? new AbortController() : null;
+            var t = setTimeout(function () { if (controller) controller.abort(); }, TIMEOUT_MS);
+            return fetch(API, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Timestamp': zyoViewProofConfig.timestamp,
-                    'X-Sign': zyoViewProofConfig.signature
-                },
-                body: JSON.stringify({
-                    user_id: zyoViewProofConfig.userId,
-                    pow_blob: zyoViewProofConfig.pow ? zyoViewProofConfig.pow.blob : '',
-                    pow_nonce: powNonce,
-                    turnstile_token: turnstileToken
-                })
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: action, vid: vid, owner: owner }),
+                keepalive: true,
+                signal: controller ? controller.signal : undefined
+            }).then(function (r) {
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return r.json();
+            }).then(function (d) {
+                clearTimeout(t);
+                return d;
+            }, function (e) {
+                clearTimeout(t);
+                throw e;
             });
-            if (!response.ok) return;
-            const result = await response.json();
-            if (!result || result.verified !== true) return;
-            zyoAnalyticsVerified = true;
-            zyoFlushAnalyticsQueue(false);
-        } catch (error) { }
-    }, 3000);
+        }
+
+        function saveLocal() { if (offline) store('zyo_liked', wantLiked ? '1' : '0'); }
+
+        // Không có server đếm (hosting tĩnh, mở file trực tiếp, API lỗi...):
+        // like vẫn hoạt động và nhớ lại trong trình duyệt này.
+        function goOffline() {
+            offline = true;
+            if (serverLiked) { serverLikes = Math.max(0, serverLikes - 1); serverLiked = false; }
+            if (!touched) wantLiked = store('zyo_liked') === '1';
+            saveLocal();
+            render();
+        }
+
+        function applyServer(data, target) {
+            var prevLiked = serverLiked;
+            if (data && typeof data.liked === 'boolean') serverLiked = data.liked;
+            else if (typeof target === 'boolean') serverLiked = target;
+            if (data && typeof data.likes === 'number') serverLikes = data.likes;
+            else serverLikes = Math.max(0, serverLikes + (serverLiked ? 1 : 0) - (prevLiked ? 1 : 0));
+            if (data && typeof data.views === 'number' && viewEl) viewEl.textContent = fmt(data.views);
+        }
+
+        function sync() {
+            timer = null;
+            if (owner) return;
+            if (offline) { saveLocal(); return; }
+            if (inFlight || wantLiked === serverLiked) return;
+
+            var target = wantLiked;
+            inFlight = true;
+            call(target ? 'like' : 'unlike').then(function (data) {
+                apiOk = true;
+                applyServer(data, target);
+                // Nếu người dùng chưa bấm gì mới thì server là nguồn sự thật
+                if (wantLiked === target) wantLiked = serverLiked;
+            }).catch(function (e) {
+                console.warn('counter:', e);
+                if (apiOk) {
+                    wantLiked = serverLiked;     // lỗi mạng tạm thời: trả về trạng thái server
+                } else {
+                    goOffline();                 // chưa từng gọi được API: chuyển sang lưu cục bộ
+                }
+            }).then(function () {
+                inFlight = false;
+                render();
+                if (!offline && wantLiked !== serverLiked) schedule(); // còn thay đổi chưa gửi
+            });
+        }
+
+        function schedule() {
+            if (timer) clearTimeout(timer);
+            timer = setTimeout(sync, DEBOUNCE_MS);
+        }
+
+        // Đếm lượt xem (trừ owner) và tải số liệu thật
+        call(owner ? 'stats' : 'view').then(function (data) {
+            apiOk = true;
+            var clicked = touched;                                  // đã bấm like trong lúc đang tải?
+            if (data && typeof data.liked === 'boolean') {
+                serverLiked = data.liked;
+                if (!clicked) wantLiked = data.liked;
+            }
+            if (data && typeof data.likes === 'number') serverLikes = data.likes;
+            if (data && typeof data.views === 'number' && viewEl) viewEl.textContent = fmt(data.views);
+            render();
+            if (clicked) schedule();
+        }).catch(function (e) {
+            console.warn('counter:', e);
+            goOffline();
+        });
+
+        if (likeBtn) {
+            likeBtn.addEventListener('change', function () {
+                touched = true;
+                wantLiked = likeBtn.checked;
+                render();                    // đổi số ngay lập tức
+                if (owner) return;           // owner's likes are not counted
+                saveLocal();
+                schedule();                  // gộp các lần bấm nhanh, chỉ gửi trạng thái cuối cùng
+            });
+        }
+
+        // Rời trang khi còn like chưa gửi: gửi ngay (fetch dùng keepalive)
+        window.addEventListener('pagehide', function () {
+            if (timer) { clearTimeout(timer); sync(); }
+        });
+    })();
 </script>
 <style>
     .text_effect_5 {
@@ -1864,6 +1882,13 @@
             offline: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" stroke="%2380848e" stroke-width="2" fill="none"/></svg>'
         };
 
+        // Tippy chỉ đọc data-tippy-content lúc khởi tạo => cập nhật qua setContent
+        function setTip(el, text) {
+            if (!el) return;
+            el.setAttribute('data-tippy-content', text);
+            if (el._tippy && typeof el._tippy.setContent === 'function') el._tippy.setContent(text);
+        }
+
         function updateDiscordUI(data) {
             if (!data) return;
             const user = data.discord_user;
@@ -1893,7 +1918,7 @@
             const statusEl = document.getElementById('discordStatusIcon');
             if (statusEl) {
                 statusEl.src = statusSVGs[status] || statusSVGs.offline;
-                statusEl.setAttribute('data-tippy-content', status.toUpperCase());
+                setTip(statusEl, status.toUpperCase());
             }
 
             // 4. Name & Tag (Left side)
@@ -1931,7 +1956,7 @@
                 if (imgEl) {
                     imgEl.src = spotify.album_art_url;
                     imgEl.style.display = 'block';
-                    imgEl.setAttribute('data-tippy-content', `Spotify: ${spotify.song} - ${spotify.artist}`);
+                    setTip(imgEl, `Spotify: ${spotify.song} - ${spotify.artist}`);
                 }
                 if (elapsedEl) elapsedEl.style.display = 'none';
             } else if (gameActivity) {
@@ -1948,9 +1973,9 @@
                     }
                     imgEl.src = imgUrl;
                     imgEl.style.display = 'block';
-                    imgEl.setAttribute('data-tippy-content', gameActivity.name);
+                    setTip(imgEl, gameActivity.name);
                 } else if (imgEl) {
-                    imgEl.src = 'assets/img/avatar_e30eca6b59f72.png';
+                    imgEl.src = 'assets/img/activity_star.png?v=3';
                     imgEl.style.display = 'block';
                 }
 
@@ -1964,11 +1989,11 @@
             } else {
                 // Fallback default activity (Image 1)
                 if (titleEl) titleEl.textContent = 'Đơn giản là only';
-                if (subtitleEl) subtitleEl.textContent = '•°♡ i l o v e y o u ♡•°*';
+                if (subtitleEl) subtitleEl.textContent = '•°♡ i m i s s y o u ♡•°*';
                 if (imgEl) {
-                    imgEl.src = 'assets/img/avatar_e30eca6b59f72.png';
+                    imgEl.src = 'assets/img/activity_star.png?v=3';
                     imgEl.style.display = 'block';
-                    imgEl.setAttribute('data-tippy-content', 'Đơn giản là only');
+                    setTip(imgEl, 'Đơn giản là only');
                 }
                 if (elapsedEl) {
                     activityStartTime = FALLBACK_START_TIME;
@@ -1987,6 +2012,7 @@
                         const message = JSON.parse(event.data);
                         const { op, t, d } = message;
                         if (op === 1) { // Hello
+                            if (heartbeatInterval) clearInterval(heartbeatInterval);
                             heartbeatInterval = setInterval(() => {
                                 if (ws.readyState === WebSocket.OPEN) {
                                     ws.send(JSON.stringify({ op: 3 }));
@@ -2027,6 +2053,10 @@
         // Activity timer updater
         function updateTimer() {
             if (!activityStartTime) return;
+            // Bộ đếm chung (zyoUpdateDiscordActivityTimers) đọc mốc từ thuộc tính này; trước đây nó luôn là năm 2009
+            // nên mỗi giây ghi đè giờ của hoạt động thật. Cho nó dùng cùng mốc với bộ đếm này.
+            const elapsedWrap = document.getElementById('discordActivityElapsed');
+            if (elapsedWrap) elapsedWrap.dataset.discordActivityStartedAt = String(Math.floor(activityStartTime / 1000));
             const elapsedSec = Math.floor((Date.now() - activityStartTime) / 1000);
             if (elapsedSec < 0) return;
             const timeEl = document.getElementById('discordActivityTime');
@@ -2035,7 +2065,7 @@
             const mins = Math.floor((elapsedSec % 3600) / 60);
             const secs = elapsedSec % 60;
             const pad = (n) => String(n).padStart(2, '0');
-            timeEl.textContent = hrs > 0 ? `${hrs}:${pad(mins)}:${pad(secs)}` : `${pad(mins)}:${pad(secs)}`;
+            timeEl.textContent = `${pad(hrs)}:${pad(mins)}:${pad(secs)}`; // cùng định dạng HH:MM:SS như bộ đếm chung
         }
         updateTimer();
         setInterval(updateTimer, 1000);
@@ -2057,19 +2087,23 @@
 
         if (!isDeleting && index === titleText.length) {
             isDeleting = true;
-            setTimeout(typeWriter, 0);
+            setTimeout(typeWriter, 1800);
             return;
         } else if (isDeleting && index === 0) {
             isDeleting = false;
-            setTimeout(typeWriter, 0);
+            setTimeout(typeWriter, 400);
             return;
         }
 
-        const speed = isDeleting ? 350 : 350;
+        const speed = isDeleting ? 200 : 300;
         setTimeout(typeWriter, speed);
     }
 
-    window.onload = typeWriter;
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', typeWriter);
+    } else {
+        typeWriter();
+    }
 </script>
 <script>
     function openPopupPreview(link) {
@@ -2089,3 +2123,6 @@
     textWaveEffectDescription('#bio_description');
 </script>
 <!--  -->
+</body>
+
+</html>
