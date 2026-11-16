@@ -1349,12 +1349,7 @@
             if (volumeValue === 0) {
                 if (!audio.paused) { pausedByMute = true; audio.pause(); }
                 defs.innerHTML = `
-                    <mask id="volumeMute">
-                        <g fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4">
-                            <path fill="#555" d="M24 6v36c-7 0-12.201-9.16-12.201-9.16H6a2 2 0 0 1-2-2V17.01a2 2 0 0 1 2-2h5.799S17 6 24 6Z"/>
-                            <path stroke-linecap="round" d="m32.5 18.5 11 11m0-11-11 11"/>
-                        </g>
-                    </mask>
+                    <mask id="volumeMute"><mask id="volumeMute1" width="13" height="13" x="30" y="18" maskUnits="userSpaceOnUse" style="mask-type: alpha;"><path d="M30 18h13v13H30z"/></mask><g fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4"><g stroke-linecap="round" mask="url(#volumeMute1)"><path d="m40.735 20.286l-8.486 8.485m.001-8.485l8.485 8.485"/></g><path fill="#555" d="M24 6v36c-7 0-12.201-9.16-12.201-9.16H6a2 2 0 0 1-2-2V17.01a2 2 0 0 1 2-2h5.799S17 6 24 6Z"/></g></mask>
                     `;
                 mask.setAttribute("mask", "url(#volumeMute)");
             } else {
@@ -1383,12 +1378,7 @@
                 slider.set(0);
 
                 defs.innerHTML = `
-                    <mask id="volumeMute">
-                        <g fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4">
-                            <path fill="#555" d="M24 6v36c-7 0-12.201-9.16-12.201-9.16H6a2 2 0 0 1-2-2V17.01a2 2 0 0 1 2-2h5.799S17 6 24 6Z"/>
-                            <path stroke-linecap="round" d="m32.5 18.5 11 11m0-11-11 11"/>
-                        </g>
-                    </mask>
+                    <mask id="volumeMute"><mask id="volumeMute1" width="13" height="13" x="30" y="18" maskUnits="userSpaceOnUse" style="mask-type: alpha;"><path d="M30 18h13v13H30z"/></mask><g fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4"><g stroke-linecap="round" mask="url(#volumeMute1)"><path d="m40.735 20.286l-8.486 8.485m.001-8.485l8.485 8.485"/></g><path fill="#555" d="M24 6v36c-7 0-12.201-9.16-12.201-9.16H6a2 2 0 0 1-2-2V17.01a2 2 0 0 1 2-2h5.799S17 6 24 6Z"/></g></mask>
                     `;
                 mask.setAttribute("mask", "url(#volumeMute)");
             }
@@ -1447,6 +1437,17 @@
         // wantLiked  : trạng thái người dùng đang muốn (đổi tức thì khi click).
         // Số hiển thị = serverLikes + chênh lệch giữa wantLiked và serverLiked.
         var serverLikes = readCount(likeEl);
+
+        // ---- Lượt xem: mỗi khách chỉ được +1 lượt / 24 giờ ------------------------------
+        // Khách mới (chưa có mốc thời gian) => tính ngay. Khách cũ => phải qua 24h mới tính lại.
+        var DAY_MS = 24 * 60 * 60 * 1000;
+        var baseViews = readCount(viewEl);                                   // số hiển thị sẵn trong HTML
+        var lastViewAt = parseInt(store('zyo_view_ts') || '0', 10) || 0;
+        var sinceView = Date.now() - lastViewAt;
+        var viewDue = !lastViewAt || sinceView < 0 || sinceView >= DAY_MS;   // sinceView < 0: đồng hồ máy bị chỉnh lùi
+        var localViews = parseInt(store('zyo_local_views') || '0', 10) || 0; // số lượt xem tính trong trình duyệt này (chế độ không server)
+        var viewCountedLocally = false;
+        function markViewed() { store('zyo_view_ts', String(Date.now())); }
         var serverLiked = false;
         var wantLiked = false;
         var inFlight = false;     // chỉ cho phép 1 request like/unlike tại một thời điểm
@@ -1498,6 +1499,14 @@
             offline = true;
             if (serverLiked) { serverLikes = Math.max(0, serverLikes - 1); serverLiked = false; }
             if (!touched) wantLiked = store('zyo_liked') === '1';
+            // Không có server: lượt xem cũng đếm trong trình duyệt này (khách mới +1, khách cũ cách 24h mới +1)
+            if (!owner && viewDue && !viewCountedLocally) {
+                viewCountedLocally = true;
+                localViews += 1;
+                store('zyo_local_views', String(localViews));
+                markViewed();
+            }
+            if (viewEl) viewEl.textContent = fmt(baseViews + localViews);
             saveLocal();
             render();
         }
@@ -1543,9 +1552,11 @@
             timer = setTimeout(sync, DEBOUNCE_MS);
         }
 
-        // Đếm lượt xem (trừ owner) và tải số liệu thật
-        call(owner ? 'stats' : 'view').then(function (data) {
+        // Đếm lượt xem (trừ owner): chỉ gửi 'view' khi khách mới hoặc đã qua 24h, còn lại chỉ tải số liệu
+        var viewAction = (!owner && viewDue) ? 'view' : 'stats';
+        call(viewAction).then(function (data) {
             apiOk = true;
+            if (viewAction === 'view') markViewed();
             var clicked = touched;                                  // đã bấm like trong lúc đang tải?
             if (data && typeof data.liked === 'boolean') {
                 serverLiked = data.liked;
@@ -1560,8 +1571,19 @@
             goOffline();
         });
 
+        // Bấm dồn (double-click / bấm liên tục) chỉ tính là MỘT lần: lần bấm thứ 2 trong vòng COOLDOWN_MS
+        // sẽ bị bỏ qua, nếu không like sẽ bật rồi tắt ngay và số like đứng yên.
+        var COOLDOWN_MS = 600;
+        var lastToggleAt = 0;
+
         if (likeBtn) {
             likeBtn.addEventListener('change', function () {
+                var now = Date.now();
+                if (now - lastToggleAt < COOLDOWN_MS) {
+                    likeBtn.checked = wantLiked;   // hoàn lại lần bật/tắt của trình duyệt
+                    return;
+                }
+                lastToggleAt = now;
                 touched = true;
                 wantLiked = likeBtn.checked;
                 render();                    // đổi số ngay lập tức
