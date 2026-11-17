@@ -528,6 +528,8 @@
 
     function zyoSetCurrentAudioLyrics(track) {
         window.zyoCurrentAudioLyrics = zyoParseLrcText(track?.lyrics?.synced || track?.synced || '');
+        // Độ trễ lời (giây) của riêng từng bài: dương = lời hiện CHẬM hơn, âm = lời hiện SỚM hơn
+        window.zyoCurrentAudioLyricsOffset = Number(track?.lyricOffset) || 0;
         window.zyoCurrentAudioLyricsActiveIndex = null;
         zyoRenderAudioLyricsDisplay();
         zyoUpdateAudioLyricsDisplay(0);
@@ -590,11 +592,12 @@
         if (!display) return;
 
         const lines = window.zyoCurrentAudioLyrics;
+        const lyricTime = currentTime - (window.zyoCurrentAudioLyricsOffset || 0);
         let activeIndex = -1;
-        if (lines[0]?.time <= currentTime + 0.08) {
+        if (lines[0]?.time <= lyricTime + 0.08) {
             activeIndex = 0;
             for (let i = 0; i < lines.length; i++) {
-                if (lines[i].time <= currentTime + 0.08) {
+                if (lines[i].time <= lyricTime + 0.08) {
                     activeIndex = i;
                 } else {
                     break;
@@ -758,7 +761,7 @@
                 <input type="hidden" name="bgOpacity" id="sliderValue1" value="100" readonly>
             </div>
         </div>
-        <label for="likeButton" class="like_button" onclick="toggleActive(this);">
+        <label for="likeButton" class="like_button">
             <input style="display: none;" value="1" name="likeStatus" type="checkbox" id="likeButton">
             <svg class="likeIcon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
                 viewBox="0 0 32 32" xml:space="preserve">
@@ -1119,7 +1122,7 @@
         const playlist = [
             { src: "assets/media/audioLink_38ef6e2834b1.mp3", title: "baby...", totalDuration: "2:55", audioImage: "assets/img/audioImage_0b440956db7b.webp", hasLyrics: true, lyrics: { "source": "lrclib", "track": "3 Strikes • Terror Jr • 3 Strikes", "synced": "[00:00.99]Down for one night, like I got three strikes\n[00:02.95]Down for one night, like I got three strikes\n[00:05.72]Down for one night, like I got three strikes\n[00:08.62]Down for one night, like I got three strikes\n[00:11.74]Don me (ain\u0027t) -don me (yeah) -don me\n[00:14.99]Don me, called on me, called on me\n[00:17.94]Don me (ain\u0027t) -don me (yeah) -don me\n[00:20.78]Don me, called on me, called on me\n[00:24.04]Doing like 95 on the interstate\n[00:28.24]Looking for a dinner plate\n[00:30.39]I\u0027m hungry, you called me\n[00:33.19]To say you got something, and it\u0027s all me\n[00:36.15]Can you hold me down for one night, like I got three strikes?\n[00:42.04]I need you to free me, it\u0027s a prison inside my mind\n[00:48.01]Break me, taste me\n[00:51.33]Roll me up like the northern lights\n[00:54.06]Can you hold me down for one night, like I got three strikes?\n[00:59.55]Don me (ain\u0027t) -don me (yeah) -don me\n[01:02.66]Don me, called on me, called on me\n[01:05.61]Don me (ain\u0027t) -don me (yeah) -don me\n[01:08.36]Don me, called on me (like I got three strikes) called on me\n[01:11.61]Don me (ain\u0027t) -don me (yeah) -don me\n[01:14.59]Don me, called on me, called on me\n[01:17.46]Don me (ain\u0027t) -don me (yeah) -don me\n[01:20.48]Don me, called on me (like I got three strikes) called on me\n[01:23.67]Lit up, burnt out\n[01:26.82]Closer to God than we\u0027ve ever been now\n[01:29.82]Sipping slow, talking loud\n[01:33.07]Enough soul, we could sell out\n[01:35.66]Can you hold me down for one night, like I got three strikes?\n[01:41.44]I need you to free me, it\u0027s a prison inside my mind\n[01:47.86]Break me, taste me\n[01:50.91]Roll me up like the northern lights\n[01:53.86]Can you hold me down for one night, like I got three strikes?\n[01:59.09]Don me (ain\u0027t) -don me (yeah) -don me\n[02:01.86]Don me, called on me, called on me\n[02:04.86]Don me (ain\u0027t) -don me (yeah) -don me\n[02:07.94]Don me, called on me (like I got three strikes)\n[02:11.04]Don me (ain\u0027t) -don me (yeah) -don me\n[02:13.71]Don me, called on me, called on me\n[02:16.79]Don me (ain\u0027t) -don me (yeah) -don me\n[02:19.75]Don me, called on me (like I got three strikes) called on me\n[02:23.60](Ain\u0027t) -don me (yeah) -don me\n[02:26.03]Don me, called on me, called on me\n[02:28.99]Don me (ain\u0027t) -don me (yeah) -don me\n[02:31.81]Don me, called on me (like I got three strikes)\n[02:34.97]Don me (ain\u0027t) -don me (yeah) -don me\n[02:37.95]Don me, called on me, called on me\n[02:40.96]Don me (ain\u0027t) -don me (yeah) -don me\n[02:44.13]Don me, called on me (like I got three strikes) called on me\n[02:47.05]Like I got three strikes\n[02:48.03]Like I got three strikes\n[02:49.42]Like I got three strikes\n[02:51.24]Like I got three strikes\n[02:53.00]" } },
             { src: "assets/media/audioLink_18bb0505aea4.mp3", title: "...I Miss...", totalDuration: "2:31", audioImage: "assets/img/audioImage_86e9783412ac.webp", hasLyrics: true, lyrics: { "source": "lrclib", "track": "Earrings • Malcolm Todd • Sweet Boy", "synced": "[00:01.03] Her love is in your head\n[00:02.96] You lost your earrings in her bed\n[00:06.36] You couldn\u0027t tell her that you lost them\n[00:09.41] \u0027Cause you\u0027re scared and you\u0027re not talking\n[00:12.49] So you think of what to say\n[00:15.33] Then save it for another day\n[00:18.52] \u0027Cause you just never had the heart\n[00:21.57] Now they just drift further apart\n[00:24.12] From you\n[00:30.13] From you\n[00:36.15] From you\n[00:41.83] From you\n[00:48.22]\n[01:12.69] Her love is in your head\n[01:14.99] You lost your earrings in her bed\n[01:18.19] You couldn\u0027t tell her that you lost them\n[01:21.66] \u0027Cause you\u0027re scared and you\u0027re not talking\n[01:24.56] So you think of what to say\n[01:26.93] Then save it for another day\n[01:30.14] \u0027Cause you just never had the heart\n[01:33.04] Now they just drift further apart\n[01:36.32] From you\n[01:37.77] Extra, extra read all about it\n[01:40.28] Malcolm\u0027s in his feelings and he can\u0027t get out of it (from you)\n[01:43.70] Extra, extra read all about it\n[01:46.34] Malcolm\u0027s in his feelings and he can\u0027t get out of it (from you)\n[01:49.60] Extra, extra read all about it\n[01:52.37] Malcolm\u0027s in his feelings and he can\u0027t get out of it (from you)\n[01:55.36] Extra, extra read all about it\n[01:58.47] Malcolm\u0027s in his feelings and he can\u0027t get out of it\n[02:00.97] From you\n[02:06.23] From you\n[02:11.80] From you\n[02:13.23] Extra, extra read all about it\n[02:16.31] Malcolm\u0027s in his feelings and he can\u0027t get out of it (from you)\n[02:19.02] Extra, extra read all about it\n[02:22.13] Malcolm\u0027s in his feelings and he can\u0027t get out of it\n[02:25.04] Can\u0027t get out of it\n[02:26.94] Can\u0027t get out of it\n[02:29.21] I hope you like my mixtape\n[02:30.66]" } },
-            { src: "assets/media/audioLink_ef1a7a08f097.mp3", title: "...You", totalDuration: "3:05", audioImage: "assets/img/audioImage_2b17a28783f4.webp", hasLyrics: true, lyrics: { "source": "lrclib", "track": "50 Feet • SoMo - Topic • 50 Feet", "synced": "[00:00.45] 50, 50 feet up underground\n[00:04.87] You know I keep my feet on the sound\n[00:08.81] 50, 50 feet up underground\n[00:12.38] You know I keep my feet on the sound\n[00:15.77] I\u0027m around, baby, I\u0027m around\n[00:19.59] Underground, but you know I\u0027m around\n[00:23.31] I was down, lately I\u0027ve been down (down)\n[00:27.10] Ran around, now I\u0027m back I\u0027m found\n[00:30.92] Pour the wine up\n[00:33.09] You\u0027re silent (huh?)\n[00:35.26] Why though? (Oh)\n[00:36.92] You know you like\n[00:38.73] This style of (uh)\n[00:40.65] This side of\n[00:42.60] I know you like it\n[00:44.81] I fucked you right\n[00:46.55] I did, I loved you every single night\n[00:48.70] You know you like, that, dear\n[00:50.74] You know I like it when I ride, you owe me all of it\n[00:54.52] You told me every single time, I\u0027m holding on to it\n[00:58.37] I\u0027m holding everything that\u0027s mine\n[01:00.21] I fucked you right\n[01:01.34] I did, I loved you every single night\n[01:04.03] You know you like, that, dear\n[01:05.93] You know I like it when I ride, you owe me all of it\n[01:09.71] You told me every single time, I\u0027m holding on to it\n[01:13.64] I\u0027m holding everything that\u0027s mine, you know it\n[01:17.18] Forgiving you 50, 50, 50 times\n[01:20.90] fed up with the shit that you do\n[01:24.68] Constantly, endlessly busy with my work\n[01:28.58] I guess you\u0027re the reason I don\u0027t love any\n[01:31.46] The devil has taken control of you\n[01:33.75] Now you\u0027re my worst enemy\n[01:35.59] But God knows I loved so much I could die\n[01:37.35] But when I need you the most\n[01:41.20] Side bitch is calling you, you\u0027re on the go\n[01:42.95] You know\n[01:45.03] You know what I mean\n[01:46.02] I loved you right\n[01:47.34] I did, I loved you every single night\n[01:49.79] I never stopped crying at night\n[01:53.54] You\u0027ve broken my heart—now I sing my heart out to you\n[01:57.38] I think about you all the time\n[02:00.94] I fucked you right\n[02:02.64] I did, I loved you every single night\n[02:04.79] You know you like, that, dear\n[02:06.79] You know I like it when I ride, you owe me all of it\n[02:10.45] You told me every single time, I\u0027m holding on to it\n[02:14.34] I\u0027m holding everything that\u0027s mine, you know it\n[02:17.61] 50, 50 feet up underground\n[02:21.63] You know I keep my feet on the sound\n[02:25.67] 50, 50 feet up underground\n[02:29.05] You know I keep my feet on the sound\n[02:32.36]\n[02:48.35] I\u0027m around, baby, I\u0027m around\n[02:52.11] Underground, but you know I\u0027m around\n[02:55.87] I was down, lately I\u0027ve been down (down)\n[03:00.71] Oh-oh, oh-oh\n[03:02.80]" } },
+            { src: "assets/media/audioLink_ef1a7a08f097.mp3", title: "...You", totalDuration: "3:05", audioImage: "assets/img/audioImage_2b17a28783f4.webp", hasLyrics: true, lyricOffset: 0.25, lyrics: { "source": "lrclib", "track": "50 Feet • SoMo - Topic • 50 Feet", "synced": "[00:00.45] 50, 50 feet up underground\n[00:04.87] You know I keep my feet on the sound\n[00:08.81] 50, 50 feet up underground\n[00:12.38] You know I keep my feet on the sound\n[00:15.77] I\u0027m around, baby, I\u0027m around\n[00:19.59] Underground, but you know I\u0027m around\n[00:23.31] I was down, lately I\u0027ve been down (down)\n[00:27.10] Ran around, now I\u0027m back I\u0027m found\n[00:30.92] Pour the wine up\n[00:33.09] You\u0027re silent (huh?)\n[00:35.26] Why though? (Oh)\n[00:36.92] You know you like\n[00:38.73] This style of (uh)\n[00:40.65] This side of\n[00:42.60] I know you like it\n[00:44.81] I fucked you right\n[00:46.55] I did, I loved you every single night\n[00:48.70] You know you like, that, dear\n[00:50.74] You know I like it when I ride, you owe me all of it\n[00:54.52] You told me every single time, I\u0027m holding on to it\n[00:58.37] I\u0027m holding everything that\u0027s mine\n[01:00.21] I fucked you right\n[01:01.34] I did, I loved you every single night\n[01:04.03] You know you like, that, dear\n[01:05.93] You know I like it when I ride, you owe me all of it\n[01:09.71] You told me every single time, I\u0027m holding on to it\n[01:13.64] I\u0027m holding everything that\u0027s mine, you know it\n[01:17.18] Forgiving you 50, 50, 50 times\n[01:20.90] fed up with the shit that you do\n[01:24.68] Constantly, endlessly busy with my work\n[01:28.58] I guess you\u0027re the reason I don\u0027t love any\n[01:31.46] The devil has taken control of you\n[01:33.75] Now you\u0027re my worst enemy\n[01:35.59] But God knows I loved so much I could die\n[01:37.35] But when I need you the most\n[01:41.20] Side bitch is calling you, you\u0027re on the go\n[01:42.95] You know\n[01:45.03] You know what I mean\n[01:46.02] I loved you right\n[01:47.34] I did, I loved you every single night\n[01:49.79] I never stopped crying at night\n[01:53.54] You\u0027ve broken my heart—now I sing my heart out to you\n[01:57.38] I think about you all the time\n[02:00.94] I fucked you right\n[02:02.64] I did, I loved you every single night\n[02:04.79] You know you like, that, dear\n[02:06.79] You know I like it when I ride, you owe me all of it\n[02:10.45] You told me every single time, I\u0027m holding on to it\n[02:14.34] I\u0027m holding everything that\u0027s mine, you know it\n[02:17.61] 50, 50 feet up underground\n[02:21.63] You know I keep my feet on the sound\n[02:25.67] 50, 50 feet up underground\n[02:29.05] You know I keep my feet on the sound\n[02:32.36]\n[02:48.35] I\u0027m around, baby, I\u0027m around\n[02:52.11] Underground, but you know I\u0027m around\n[02:55.87] I was down, lately I\u0027ve been down (down)\n[03:00.71] Oh-oh, oh-oh\n[03:02.80]" } },
         ];
         let currentTrackIndex = 0;
         let coverToken = 0;        // chống ảnh bìa của bài cũ load xong muộn rồi đè lên bài mới
@@ -1424,6 +1427,7 @@
         }
 
         var likeBtn = document.getElementById('likeButton');
+        var likeLabel = likeBtn ? likeBtn.closest('label') : null;
         var likeEl = document.getElementById('likeCount');
         var viewEl = document.getElementById('viewCount');
 
@@ -1466,9 +1470,19 @@
             return Math.max(0, n);
         }
 
+        // toggleActive của main.js là kiểu 3 trạng thái: (không có) -> active -> unactive -> active ...
+        // Gọi đúng 1 lần mỗi khi trạng thái tim đổi, để nút sáng (active) khi đã thích và chạy hiệu ứng bỏ thích (unactive).
+        function syncLabel() {
+            if (!likeLabel) return;
+            if (likeLabel.classList.contains('active') === wantLiked) return;
+            if (typeof window.toggleActive === 'function') window.toggleActive(likeLabel);
+            else likeLabel.classList.toggle('active', wantLiked);
+        }
+
         function render() {
             if (likeEl) likeEl.textContent = fmt(shownLikes());
-            if (likeBtn) likeBtn.checked = wantLiked;
+            syncLabel();
+            if (likeBtn) likeBtn.checked = wantLiked;   // đặt sau cùng để không bị toggleActive/trình duyệt đảo lại
         }
 
         function call(action) {
@@ -1577,21 +1591,39 @@
         var COOLDOWN_MS = 600;
         var lastToggleAt = 0;
 
+        // Tự giữ trạng thái tim (wantLiked) và bắt thẳng cú CLICK vào nút tim, không dựa vào việc ô tick có đổi hay không:
+        // main.js / toggleActive có thể chặn hoặc đảo ô tick, khi đó sự kiện 'change' không đến và tim không bấm được.
+        function pinChecked() {              // ép ô tick về đúng trạng thái sau khi mọi handler khác chạy xong
+            if (!likeBtn) return;
+            likeBtn.checked = wantLiked;
+            setTimeout(function () { likeBtn.checked = wantLiked; }, 0);
+            setTimeout(function () { likeBtn.checked = wantLiked; }, 60);
+        }
+
+        function userToggle() {
+            var now = Date.now();
+            if (now - lastToggleAt < COOLDOWN_MS) { pinChecked(); return; }   // bấm dồn: bỏ qua
+            lastToggleAt = now;
+            touched = true;
+            wantLiked = !wantLiked;
+            render();                        // đổi số ngay lập tức
+            pinChecked();
+            if (owner) return;               // owner's likes are not counted
+            saveLocal();
+            schedule();                      // gộp các lần bấm nhanh, chỉ gửi trạng thái cuối cùng
+        }
+
         if (likeBtn) {
-            likeBtn.addEventListener('change', function () {
-                var now = Date.now();
-                if (now - lastToggleAt < COOLDOWN_MS) {
-                    likeBtn.checked = wantLiked;   // hoàn lại lần bật/tắt của trình duyệt
-                    return;
-                }
-                lastToggleAt = now;
-                touched = true;
-                wantLiked = likeBtn.checked;
-                render();                    // đổi số ngay lập tức
-                if (owner) return;           // owner's likes are not counted
-                saveLocal();
-                schedule();                  // gộp các lần bấm nhanh, chỉ gửi trạng thái cuối cùng
-            });
+            // Capture ở document: chạy TRƯỚC onclick của nhãn nên không bị chặn bởi toggleActive
+            document.addEventListener('click', function (e) {
+                var t = e.target;
+                if (!t || !t.closest || t === likeBtn) return;                // bỏ qua cú click "ảo" mà trình duyệt gửi lên ô tick
+                if (!t.closest('label.like_button, label[for="likeButton"]')) return;
+                userToggle();
+            }, true);
+
+            // Nếu trình duyệt vẫn tự đổi ô tick thì ép lại đúng trạng thái của mình
+            likeBtn.addEventListener('change', pinChecked);
         }
 
         // Rời trang khi còn like chưa gửi: gửi ngay (fetch dùng keepalive)
